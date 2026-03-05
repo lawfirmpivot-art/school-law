@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>상세 보기 - 학교폭력해설집</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="storage.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a1a",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0a0a0a",
+                    }
+                }
+            }
+        };
+    </script>
+    <style type="text/tailwindcss">
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .mono-tag { font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace; }
+        .prose h2 { @apply text-3xl font-black mt-16 mb-8 tracking-tight border-b pb-4 border-slate-200 dark:border-slate-800; }
+        .prose p { @apply text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6; }
+        .ql-editor { padding: 0 !important; }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased">
+    <nav
+        class="fixed top-0 w-full z-50 px-6 py-5 flex justify-between items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center">
+            <a class="flex items-center gap-1 group" href="index.html">
+                <span class="text-xl font-black tracking-tighter text-primary dark:text-white">학교폭력</span>
+                <div class="bg-primary dark:bg-white text-white dark:text-primary px-1.5 py-0.5 ml-0.5">
+                    <span class="text-base font-black tracking-tighter leading-none">해설집</span>
+                </div>
+            </a>
+        </div>
+        <div class="hidden md:flex gap-10 text-[15px] font-bold tracking-tight">
+            <a class="hover:opacity-60 transition-opacity whitespace-nowrap" href="about.html">작성자(변호사) 소개</a>
+            <a class="hover:opacity-60 transition-opacity whitespace-nowrap" href="blog.html">학교폭력 해설집</a>
+            <a class="hover:opacity-60 transition-opacity whitespace-nowrap" href="news.html">관련 뉴스 분석</a>
+            <a class="hover:opacity-60 transition-opacity whitespace-nowrap" href="index.html#consult">상담 신청</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
+                onclick="document.documentElement.classList.toggle('dark')">
+                <span class="material-symbols-outlined text-[20px]">dark_mode</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-32 px-6">
+        <article id="post-view" class="max-w-3xl mx-auto prose dark:prose-invert">
+            <!-- Loading -->
+            <div class="flex flex-col items-center py-24 text-slate-400">
+                <div class="w-12 h-12 border-4 border-slate-200 border-t-primary rounded-full animate-spin mb-4"></div>
+                <p class="font-bold">원고를 불러오는 중...</p>
+            </div>
+        </article>
+    </main>
+
+    <footer
+        class="border-t border-slate-200 dark:border-slate-800 py-12 px-6 md:px-12 bg-white dark:bg-background-dark">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div>
+                <h3 class="text-xl font-bold tracking-tighter mb-2">학교폭력 해설집</h3>
+                <p class="text-xs text-slate-500">© 2026 Legal Expert Portfolio. All rights reserved.</p>
+            </div>
+            <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
+                <a class="hover:opacity-50" href="blog.html">Blog</a>
+                <a class="hover:opacity-50" href="admin.html">Admin</a>
+                <a class="hover:opacity-50" href="index.html#consult">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const view = document.getElementById('post-view');
+
+            async function renderPost() {
+                if (!window.CMS) {
+                    setTimeout(renderPost, 100);
+                    return;
+                }
+
+                try {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    let pid = urlParams.get('id');
+
+                    // Fallback 1: cases where ID might be in different formats
+                    if (!pid) {
+                        const pathSegments = window.location.pathname.split('/');
+                        const lastSegment = pathSegments[pathSegments.length - 1];
+                        if (lastSegment && lastSegment.includes('?id=')) {
+                            pid = lastSegment.split('?id=')[1];
+                        }
+                    }
+
+                    // Fallback 2: Local storage backup (for local server parameter stripping)
+                    if (!pid) {
+                        pid = localStorage.getItem('last_post_id');
+                        if (pid) console.log('Recovered ID from localStorage:', pid);
+                    }
+
+                    console.log('Fetching post with ID:', pid, 'from URL:', window.location.href);
+
+                    if (!pid || pid === 'undefined' || pid === 'null') {
+                        view.innerHTML = `
+                            <div class="text-center py-24 text-slate-400">
+                                <p class="mb-4">잘못된 접근입니다. 게시글 ID를 찾을 수 없습니다.</p>
+                                <div class="text-left text-xs text-slate-500 bg-slate-100 dark:bg-slate-900 p-4 rounded-sm border border-slate-200 dark:border-slate-800 max-w-md mx-auto">
+                                    <p class="font-bold mb-2 uppercase opacity-50">시스템 디버그 정보</p>
+                                    <p>현재 주소: ${window.location.href}</p>
+                                    <p>URL 추출 ID: ${urlParams.get('id') || 'null'}</p>
+                                    <p>저장소 백업 ID: ${localStorage.getItem('last_post_id') || 'null'}</p>
+                                    <p class="mt-2 text-primary dark:text-white">* 목록 페이지에서 글을 다시 클릭해 보세요.</p>
+                                </div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    const post = await CMS.getPost(pid);
+
+
+
+                    if (post) {
+                        // Increase view count asynchronously
+                        CMS.incrementView(pid);
+
+                        view.innerHTML = `
+                            <header class="not-prose mb-12">
+                                <div class="flex flex-wrap items-center gap-4 mb-6">
+                                    <span class="mono-tag text-[10px] border border-slate-300 dark:border-slate-700 px-3 py-1 rounded-full uppercase tracking-tighter">${post.category || '일반'}</span>
+                                    <time class="text-xs text-slate-500 font-medium">${post.date || ''}</time>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-8">
+                                    ${(post.tags || []).map(tag => `
+                                        <span class="bg-black dark:bg-white text-white dark:text-black px-3 py-1 text-[10px] font-bold rounded-sm uppercase tracking-widest">
+                                            # ${tag}
+                                        </span>
+                                    `).join('')}
+                                </div>
+                                <h1 class="text-4xl md:text-5xl font-black text-primary dark:text-white leading-tight tracking-tighter">${post.title}</h1>
+                            </header>
+                            
+                            ${post.image ? `<img src="${post.image}" alt="${post.title}" class="rounded-sm shadow-xl w-full mb-12 object-cover max-h-[500px]" />` : ''}
+                            
+                            <p class="lead text-xl text-slate-600 dark:text-slate-400 mb-12 font-medium">${post.summary || ''}</p>
+                            
+                            <div class="mt-12 ql-editor">
+                                ${post.content}
+                            </div>
+
+                            <div id="admin-actions" class="${await CMS.isAdmin() ? '' : 'hidden'} fixed bottom-12 right-12 z-50">
+                                <a href="editor.html?id=${pid}" class="flex items-center gap-3 bg-primary dark:bg-white text-white dark:text-primary px-8 py-4 rounded-full font-black shadow-2xl hover:scale-110 transition-transform">
+                                    <span class="material-symbols-outlined">edit</span>
+                                    <span>원고 수정하기</span>
+                                </a>
+                            </div>
+
+                            <div class="not-prose mt-16 flex flex-col items-center py-12 border border-slate-200 dark:border-slate-800 rounded-sm bg-slate-50 dark:bg-slate-900/50">
+                                <h3 class="text-2xl font-bold mb-4 italic text-center px-6">"더 구체적인 상황에 대한 조언이 필요하신가요?"</h3>
+                                <p class="text-slate-500 mb-8 px-6 text-center text-sm">지금 바로 1:1 상담을 예약하고 전문가의 명쾌한 해답을 들어보세요.</p>
+                                <a href="index.html#consult" class="bg-primary text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform text-sm">
+                                    지금 바로 상담하기
+                                </a>
+                            </div>
+                        `;
+                    } else {
+                        view.innerHTML = '<p class="text-center py-24 text-slate-400">원고를 찾을 수 없습니다. 삭제되었거나 존재하지 않는 게시글입니다.</p>';
+                    }
+                } catch (err) {
+                    console.error('Rendering error:', err);
+                    view.innerHTML = `<p class="text-center py-24 text-rose-500">화면을 표시하는 중 오류가 발생했습니다: ${err.message}</p>`;
+                }
+            }
+            renderPost();
+        });
+    </script>
+</body>
+
+</html>

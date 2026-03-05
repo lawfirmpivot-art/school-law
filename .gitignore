@@ -1,0 +1,7 @@
+.vscode/
+*.png
+!랜딩페이지프로필사진.png
+!프로필사진(사무실).png
+!프로필사진.png
+node_modules/
+.DS_Store

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>관리자 인증 - 학교폭력해설집</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="storage.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a1a",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0a0a0a",
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+
+<body
+    class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex items-center justify-center">
+
+    <div
+        class="max-w-md w-full p-8 bg-white dark:bg-slate-900 shadow-2xl rounded-sm border border-slate-200 dark:border-slate-800">
+        <div id="login-section">
+            <div class="text-center mb-10">
+                <div
+                    class="inline-flex items-center justify-center w-16 h-16 bg-primary dark:bg-white text-white dark:text-primary rounded-full mb-6">
+                    <span class="material-symbols-outlined text-3xl">lock</span>
+                </div>
+                <h1 class="text-3xl font-black tracking-tighter">관리자 인증</h1>
+                <p class="text-slate-500 text-sm mt-2">시스템 접근을 위해 비밀번호를 입력하세요.</p>
+            </div>
+
+            <div id="admin-actions" class="space-y-4">
+                <button type="button" id="login-google-btn"
+                    class="w-full flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-300 py-4 font-black rounded-sm hover:bg-slate-50 transition-all uppercase tracking-widest text-sm dark:bg-slate-800 dark:text-white dark:border-slate-700 dark:hover:bg-slate-700">
+                    <img src="https://www.google.com/favicon.ico" class="w-5 h-5" alt="Google">
+                    Google 계정으로 인증하기
+                </button>
+            </div>
+
+            <div id="error-msg"
+                class="hidden mt-4 p-3 bg-rose-50 dark:bg-rose-900/20 text-rose-500 text-xs text-center font-bold border border-rose-200 dark:border-rose-900/50 rounded-sm">
+                비밀번호가 올바르지 않습니다.
+            </div>
+
+            <div class="mt-8 text-center pt-6 border-t border-slate-100 dark:border-slate-800">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-primary dark:hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-sm">home</span> 홈으로 돌아가기
+                </a>
+            </div>
+        </div>
+
+        <div id="logout-section" class="hidden text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-green-500 text-white rounded-full mb-6">
+                <span class="material-symbols-outlined text-3xl">verified</span>
+            </div>
+            <h1 class="text-3xl font-black tracking-tighter mb-2">이미 인증됨</h1>
+            <p class="text-slate-500 text-sm mb-10">현재 관리자 권한으로 로그인되어 있습니다.</p>
+
+            <button id="logout-btn"
+                class="w-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 py-4 font-black rounded-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-all uppercase tracking-widest text-sm mb-4">
+                로그아웃 하기
+            </button>
+
+            <a href="index.html" class="inline-flex items-center gap-2 text-xs text-slate-400 hover:underline">
+                메인 페이지로 이동
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginSection = document.getElementById('login-section');
+            const logoutSection = document.getElementById('logout-section');
+            const loginBtn = document.getElementById('login-google-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+            const errorMsg = document.getElementById('error-msg');
+
+            // 초기 상태 확인
+            async function updateUI() {
+                if (window.CMS && await CMS.isAdmin()) {
+                    loginSection.classList.add('hidden');
+                    logoutSection.classList.remove('hidden');
+                } else {
+                    loginSection.classList.remove('hidden');
+                    logoutSection.classList.add('hidden');
+                }
+            }
+
+            // CMS 객체 로딩 대기 루프 (만약의 경우)
+            const checkCMS = setInterval(() => {
+                if (window.CMS) {
+                    updateUI();
+                    clearInterval(checkCMS);
+                }
+            }, 100);
+
+            // 로그인 처리
+            if (loginBtn) {
+                loginBtn.addEventListener('click', async () => {
+                    errorMsg.classList.add('hidden');
+                    loginBtn.innerHTML = '인증 대기 중... <span class="material-symbols-outlined animate-pulse">sync</span>';
+
+                    if (window.CMS) {
+                        const success = await CMS.login();
+                        if (!success) {
+                            errorMsg.classList.remove('hidden');
+                            loginBtn.innerHTML = '<img src="https://www.google.com/favicon.ico" class="w-5 h-5" alt="Google"> Google 계정으로 인증하기';
+                        }
+                    }
+                });
+            }
+
+            // 로그아웃 처리
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async () => {
+                    if (window.CMS) {
+                        await CMS.logout();
+                        updateUI();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
