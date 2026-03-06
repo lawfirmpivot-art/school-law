@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학교폭력 대응 7단계 - 통합 에디토리얼 시안</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fcfcfc;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        .step-num {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+        }
+
+        /* Step Header Style */
+        .step-header {
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            border-color: transparent;
+        }
+
+        .step-header:hover,
+        .step-header.active {
+            background-color: #0f172a;
+            border-radius: 2rem 2rem 0 0;
+        }
+
+        .step-header:hover .num,
+        .step-header.active .num {
+            color: #3b82f6;
+            transform: scale(1.1);
+        }
+
+        .step-header:hover .title,
+        .step-header.active .title {
+            color: white;
+        }
+
+        .step-header:hover .line,
+        .step-header.active .line {
+            background-color: #3b82f6;
+            width: 100%;
+        }
+
+        /* Main Canvas Style */
+        .main-canvas {
+            border-top: none;
+            border-radius: 0 0 3rem 3rem;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.1);
+            min-height: 420px;
+            background: white;
+            transition: all 0.5s ease;
+            margin-top: -1px;
+            /* Overlap with header border to prevent double lines */
+        }
+
+        /* Pulse Dot Animation */
+        @keyframes pulse-dot {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+
+            70% {
+                transform: scale(1.2);
+                opacity: 1;
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            display: none;
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .active .pulse-dot {
+            display: block;
+        }
+
+        .pulse-active {
+            animation: none;
+        }
+
+        /* Disable old pulse animation */
+
+        /* Floating Animation for blog cards */
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+
+<body class="py-20 pb-60">
+    <div class="max-w-[1750px] mx-auto px-8">
+        <header class="mb-32 text-center">
+            <span class="text-[11px] font-black tracking-[0.5em] text-blue-600 uppercase mb-5 block">Final Integrated
+                Layout</span>
+            <h1 class="text-5xl font-black tracking-tighter mb-8 italic">학교폭력 대응 7단계 통합 대시보드</h1>
+            <p class="text-slate-400 font-medium max-w-2xl mx-auto break-keep">7개 단계를 유기적으로 연결하고, 변호사님의 전문적인 설명과 블로그
+                포스팅을 한 공간에 여유 있게 담았습니다.</p>
+        </header>
+
+        <!-- The Combined Layout -->
+        <div class="relative">
+            <!-- 1. Header Row (Step Headers in a Bordered Container) -->
+            <div
+                class="flex items-stretch gap-[1px] relative z-10 border-x border-t border-slate-200 rounded-t-[3rem] overflow-hidden bg-slate-200">
+                <!-- Step 01 Header -->
+                <div class="step-header active flex-1 p-8 cursor-pointer group relative bg-white"
+                    onmouseover="activateStep(1)">
+                    <div class="pulse-dot"></div>
+                    <span
+                        class="num text-5xl font-black italic step-num text-slate-300 mb-6 block transition-all leading-none">01</span>
+                    <h3
+                        class="title text-lg font-black tracking-tighter mb-6 leading-tight break-keep transition-colors">
+                        신고 전<br>증거 확보</h3>
+                    <div class="line absolute bottom-0 left-0 h-[4px] w-full bg-blue-600 transition-all duration-500">
+                    </div>
+                </div>
+                <!-- Step 02 Header -->
+                <div class="step-header flex-1 p-8 cursor-pointer group relative bg-white"
+                    onmouseover="activateStep(2)">
+                    <div class="pulse-dot"></div>
+                    <span
+                        class="num text-5xl font-black italic step-num text-slate-300 mb-6 block transition-all leading-none">02</span>
+                    <h3
+                        class="title text-lg font-black tracking-tighter mb-6 leading-tight break-keep transition-colors">
+                        사안 접수<br>초기 대응</h3>
+                    <div class="line absolute bottom-0 left-0 h-[4px] w-12 bg-slate-200 transition-all duration-500">
+                    </div>
+                </div>
+                <!-- Step 03 Header -->
+                <div class="step-header flex-1 p-8 cursor-pointer group relative bg-white"
+                    onmouseover="activateStep(3)">
+                    <div class="pulse-dot"></div>
+                    <span
+                        class="num text-5xl font-black italic step-num text-slate-300 mb-6 block transition-all leading-none">03</span>
+                    <h3
+                        class="title text-lg font-black tracking-tighter mb-6 leading-tight break-keep transition-colors">
+                        즉시 분리<br>긴급 보호</h3>
+                    <div class="line absolute bottom-0 left-0 h-[4px] w-12 bg-slate-200 transition-all duration-500">
+                    </div>
+                </div>
+                <!-- Step 04 Header -->
+                <div class="step-header flex-1 p-8 cursor-pointer group relative bg-white"
+                    onmouseover="activateStep(4)">
+                    <div class="pulse-dot"></div>
+                    <span
+                        class="num text-5xl font-black italic step-num text-slate-300 mb-6 block transition-all leading-none">04</span>
+                    <h3
+                        class="title text-lg font-black tracking-tighter mb-6 leading-tight break-keep transition-colors">
+                        전담 조사관<br>사안 조사</h3>
+                    <div class="line absolute bottom-0 left-0 h-[4px] w-12 bg-slate-200 transition-all duration-500">
+                    </div>
+                </div>
+                <!-- Step 05 Header -->
+                <div class="step-header flex-1 p-8 cursor-pointer group relative bg-white"
+                    onmouseover="activateStep(5)">
+                    <div class="pulse-dot"></div>
+                    <span
+                        class="num text-5xl font-black italic step-num text-slate-300 mb-6 block transition-all leading-none">05</span>
+                    <h3
+                        class="title text-lg font-black tracking-tighter mb-6 leading-tight break-keep transition-colors">
+                        전담기구<br>심의/결정</h3>
+                    <div class="line absolute bottom-0 left-0 h-[4px] w-12 bg-slate-200 transition-all duration-500">
+                    </div>
+                </div>
+                <!-- Step 06 Header -->
+                <div class="step-header flex-1 p-8 cursor-pointer group relative bg-white"
+                    onmouseover="activateStep(6)">
+                    <div class="pulse-dot"></div>
+                    <span
+                        class="num text-5xl font-black italic step-num text-slate-300 mb-6 block transition-all leading-none">06</span>
+                    <h3
+                        class="title text-lg font-black tracking-tighter mb-6 leading-tight break-keep transition-colors">
+                        심의위원회<br>조치 의결</h3>
+                    <div class="line absolute bottom-0 left-0 h-[4px] w-12 bg-slate-200 transition-all duration-500">
+                    </div>
+                </div>
+                <!-- Step 07 Header -->
+                <div class="step-header flex-1 p-8 cursor-pointer group relative bg-white"
+                    onmouseover="activateStep(7)">
+                    <div class="pulse-dot"></div>
+                    <span
+                        class="num text-5xl font-black italic step-num text-slate-300 mb-6 block transition-all leading-none">07</span>
+                    <h3
+                        class="title text-lg font-black tracking-tighter mb-6 leading-tight break-keep transition-colors">
+                        결정 통보<br>사후 관리</h3>
+                    <div class="line absolute bottom-0 left-0 h-[4px] w-12 bg-slate-200 transition-all duration-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. The Great Canvas (Shared Content Area) -->
+            <div class="main-canvas border border-slate-200 p-16 relative overflow-hidden">
+                <div id="canvas-content"
+                    class="flex flex-col lg:flex-row gap-16 items-start relative z-10 transition-opacity duration-500">
+                    <!-- Left: Explanation Section -->
+                    <div class="lg:w-3/5">
+                        <div class="flex items-center gap-6 mb-8">
+                            <div id="canvas-icon-box"
+                                class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center transition-all">
+                                <span id="canvas-icon"
+                                    class="material-symbols-outlined text-blue-600 text-3xl">medical_services</span>
+                            </div>
+                            <div>
+                                <h2 id="canvas-title" class="text-3xl font-black tracking-tighter mb-1 italic">1단계: 신고 전
+                                    증거 확보 및 상태 점검</h2>
+                                <span
+                                    class="bg-blue-600 text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-sm">Golden
+                                    Time Phase</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-blue-600 font-black text-[10px] uppercase tracking-widest mb-3 italic">
+                                    //
+                                    김경수 변호사의 가이드</h4>
+                                <p id="canvas-desc"
+                                    class="text-slate-500 text-lg leading-relaxed font-medium break-keep">
+                                    "증거는 기억보다 강합니다. 학교폭력이 발생한 직후의 객관적인 기록은 이후의 학폭위 의결뿐만 아니라 민·형사상 소송에서도 결정적인 역할을 합니다.
+                                    신체적 폭력의 경우 반드시 정형외과나 정신건강의학과를 방문하여 **6하 원칙이 포함된 진단서**를 확보하시고, 사이버 폭력은 절대로 방을 나가지 말고
+                                    상대방의 프로필 정보가 포함된 캡처본을 만드십시오."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Blog Recommendations Section -->
+                    <div class="lg:w-2/5">
+                        <div class="flex items-center justify-between mb-8 border-b border-slate-100 pb-3">
+                            <h4 id="canvas-category"
+                                class="text-slate-900 font-black text-[10px] uppercase tracking-widest italic">피해학생 STEP
+                                01 관련 게시물</h4>
+                            <span class="text-slate-300 text-[9px] font-bold uppercase tracking-widest">List View</span>
+                        </div>
+
+                        <div id="blog-grid" class="flex flex-col gap-1">
+                            <!-- JS will generate list items here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Background Subtle Number -->
+                <div id="bg-num"
+                    class="absolute -bottom-16 -right-8 text-[22rem] font-black italic text-slate-50/50 leading-none select-none -z-0">
+                    01</div>
+            </div>
+
+            <div class="mt-20 text-center">
+                <p class="text-slate-300 text-xs font-black uppercase tracking-[0.8em] italic">Full Dashboard Sequence
+                    Complete</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const stepData = {
+            1: {
+                title: "1단계: 신고 전 증거 확보 및 상태 점검",
+                icon: "medical_services",
+                desc: "증거는 기억보다 강합니다. 학교폭력이 발생한 직후의 객관적인 기록은 이후의 학폭위 의결뿐만 아니라 민·형사상 소송에서도 결정적인 역할을 합니다. 신체적 폭력의 경우 반드시 정형외과나 정신건강의학과를 방문하여 **6하 원칙이 포함된 진단서**를 확보하시고, 사이버 폭력은 절대로 방을 나가지 말고 상대방의 프로필 정보가 포함된 캡처본을 만드십시오.",
+                blog: [
+                    { title: "진단서 끊으러 가기 전 '이것' 안 적으면 나중에 후회합니다", icon: "clinical_notes" },
+                    { title: "사이버 학폭, 방 나가는 순간 증거는 끝납니다 - 올바른 대처법", icon: "photo_library" },
+                    { title: "부모가 써주는 '학폭 관찰 일지', 법원이 인정한 단 하나의 양식", icon: "history_edu" },
+                    { title: "증거 확보 단계에서 부모님이 가장 많이 하는 '치명적 실수' 3가지", icon: "shield" }
+                ]
+            },
+            2: {
+                title: "2단계: 사안 접수 및 학교의 초기 대응",
+                icon: "campaign",
+                desc: "공식적인 대응의 시작입니다. 학교 담임 교사 혹은 117 학교폭력 신고센터를 통해 사건을 공식화하십시오. 학교는 사안을 인지한 즉시 '학교폭력 신고 접수 대장'에 기록해야 하며, 48시간 이내에 관할 교육지원청에 보고할 의무가 있습니다. 이때 신고 내용은 최대한 구체적이고 일관되게 작성되어야 추후 조사 단계에서 번복되는 불상사를 막을 수 있습니다.",
+                blog: [
+                    { title: "학폭 신고, 담임선생님이 말려도 '반드시' 진행해야 하는 이유", icon: "priority" },
+                    { title: "117 신고 센터 대기 전, 미리 메모장에 적어둬야 할 키워드", icon: "fact_check" },
+                    { title: "학교의 48시간 보고 의무, 제대로 이행되는지 확인하는 법", icon: "timer" }
+                ]
+            },
+            3: {
+                title: "3단계: 즉시 분리 및 피해학생 긴급보호",
+                icon: "shield_person",
+                desc: "피해 학생의 안전과 심리적 보호가 최우선입니다. 가해 학생과는 사안 발생 후 즉시(또는 인지 후 24시간 이내) 물리적으로 분리되어야 합니다. 또한, 피해의 정도가 심각하거나 보복이 우려될 경우 학교장 권한으로 가해 학생에 대한 '긴급 조치(출석정지 등)'를 강력히 요구할 수 있습니다. 이는 학폭위 의결 전까지 학생의 일상을 지키는 가장 중요한 방어막입니다.",
+                blog: [
+                    { title: "분리 조치 미이행 시, 학교를 상대로 즉각 대응하는 법", icon: "security_update_warning" },
+                    { title: "출석정지 및 보복금지 명령, 왜 서류 한 장이 인생을 바꿀까요?", icon: "admin_panel_settings" }
+                ]
+            },
+            4: {
+                title: "4단계: 전담 조사관의 전문 사안조사",
+                icon: "manage_search",
+                desc: "이제 외부 전문가인 전담 조사관이 사실 관계를 심층 조사합니다. 조사관은 학생 본인뿐만 아니라 목격 학생, 교사 등 다양한 이해관계자의 진술을 청취합니다. 이때 수집된 증거와 진술은 '사안 조사 보고서'라는 결과물로 만들어지며, 이는 심의위원회의 판단 근거가 됩니다. 조사 과정에서 감정적인 억울함 호소보다는 명확한 팩트와 입증 자료를 일관성 있게 제시하는 태도가 필요합니다.",
+                blog: [
+                    { title: "전담 조사관 대면 조사, 우리 아이가 기죽지 않게 지키는 노하우", icon: "record_voice_over" },
+                    { title: "조사관이 의외로 많이 묻는 '함정 질문'과 답변 가이드", icon: "block" }
+                ]
+            },
+            5: {
+                title: "5단계: 학교 전담기구 심의 및 해결 결정",
+                icon: "gavel",
+                desc: "학교 내부의 '학교폭력 전담기구'에서 사안의 해결 방향을 결정하는 고비입니다. 사건의 경미성(2주 이내 진단, 재발 우려 없음 등)을 심사하여 학교 자체적으로 해결할지, 혹은 교육지원청의 심의위원회로 넘길지를 판단합니다. 피해 학생 측이 학교 자체 해결에 부동의할 경우 사건은 무조건 심의위원회로 상정됩니다. 따라서 가해 측의 사과 진정성이 부족하다면 이 단계에서 명확한 입장을 밝혀야 합니다.",
+                blog: [
+                    { title: "학교 자체 해결 제안, '섣부른 합의'가 독이 되는 이유", icon: "handshake" },
+                    { title: "가해 부모의 사과문, '진정성' 판단 기준 3가지", icon: "not_interested" }
+                ]
+            },
+            6: {
+                title: "6단계: 심의위원회 개최 및 조치 의결",
+                icon: "balance",
+                desc: "사건의 최종 조치가 결정되는 가장 엄중한 단계입니다. 교육지원청 소속 심의위원들이 가해 학생에 대한 처분(1호~9호)과 피해 학생에 대한 보호 조치를 의결합니다. 변호사의 역할이 가장 빛나는 시점이며, 미리 제출한 '피해 학생 의견서'를 통해 가해 행위의 악의성과 지속성, 피해 피해의 심각성을 법리적으로 설득해야 합니다. 위원회의 결정은 행정 처분으로서 강력한 법적 효력을 갖습니다.",
+                blog: [
+                    { title: "학폭 심의위 위원들의 마음을 움직이는 '의견서' 작성 기술", icon: "border_color" },
+                    { title: "학폭 1호에서 9호까지, 가해자에게 가장 뼈아픈 처분은?", icon: "trending_up" }
+                ]
+            },
+            7: {
+                title: "7단계: 결정 통보 수령 및 사후 관리",
+                icon: "assignment_turned_in",
+                desc: "조치 결정문이 보호자에게 등기 우편으로 배달됩니다. 결과가 기대에 미치지 못한다면 통보받은 날로부터 90일 이내에 '행정심판'을 청구할 수 있습니다. 하지만 무엇보다 중요한 것은 사건 이후 아이의 회복입니다. 치료비 지원 제도를 활용하여 심리 상담을 지속하고, 가해 학생의 조치 이행 여부를 주기적으로 확인하며 아이가 안전하게 학교로 복귀할 수 있도록 지지해 주어야 합니다.",
+                blog: [
+                    { title: "심의 결과에 불복한다면? 행정심판 '재조사' 이끄는 전략", icon: "history" },
+                    { title: "승소보다 중요한 '아이의 회복', 치료비 청구로 일상 되찾기", icon: "account_balance_wallet" }
+                ]
+            }
+        };
+
+        function activateStep(num) {
+            // 1. Update headers appearance
+            const headers = document.querySelectorAll('.step-header');
+            headers.forEach((h, i) => {
+                const line = h.querySelector('.line');
+                if (i === num - 1) {
+                    h.classList.add('active');
+                    line.style.width = '100%';
+                    line.style.backgroundColor = '#3b82f6';
+                } else {
+                    h.classList.remove('active');
+                    line.style.width = '3rem';
+                    line.style.backgroundColor = '#f1f5f9';
+                }
+            });
+
+            // 2. Transition content with fade effect
+            const contentArea = document.getElementById('canvas-content');
+            const bgNum = document.getElementById('bg-num');
+            contentArea.style.opacity = '0';
+
+            setTimeout(() => {
+                const data = stepData[num];
+
+                // Update text
+                document.getElementById('canvas-title').textContent = data.title;
+                document.getElementById('canvas-desc').innerHTML = data.desc.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900">$1</strong>');
+                document.getElementById('canvas-category').textContent = `피해학생 STEP 0${num} 관련 게시물`;
+                document.getElementById('canvas-icon').textContent = data.icon;
+                bgNum.textContent = num < 10 ? '0' + num : num;
+
+                // Update Blog List
+                const blogGrid = document.getElementById('blog-grid');
+                blogGrid.innerHTML = '';
+                data.blog.forEach(post => {
+                    const item = document.createElement('div');
+                    item.className = "flex items-center gap-3 py-3 border-b border-slate-50 group cursor-pointer hover:bg-blue-50/50 px-4 rounded-xl transition-all";
+                    item.innerHTML = `
+                        <span class="material-symbols-outlined text-blue-500 text-xs group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+                        <h5 class="font-bold text-[14px] tracking-tighter group-hover:text-blue-600 transition-colors">${post.title}</h5>
+                    `;
+                    blogGrid.appendChild(item);
+                });
+
+                contentArea.style.opacity = '1';
+            }, 300);
+        }
+
+        // Initialize with Step 1
+        window.onload = () => activateStep(1);
+    </script>
+</body>
+
+</html>

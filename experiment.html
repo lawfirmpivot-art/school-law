@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>11-B 아카이브 미니멀 심화 5선 - 학교폭력해설집</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=Outfit:wght@500;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111111",
+                        accent: "#b89548",
+                        "legal-blue": "#1a2a44"
+                    },
+                    fontFamily: {
+                        display: ["Outfit", "Inter", "Noto Sans KR", "sans-serif"],
+                        serif: ["Playfair Display", "serif"],
+                        body: ["Noto Sans KR", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Noto Sans KR', sans-serif; }
+        }
+        .mono-tag { font-family: 'ui-monospace', monospace; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+
+<body class="bg-white text-primary transition-colors duration-500">
+    <nav
+        class="fixed top-0 w-full z-50 px-10 py-8 flex justify-between items-center bg-white/60 backdrop-blur-2xl border-b border-slate-100">
+        <div class="flex items-center gap-3">
+            <span class="text-2xl font-black tracking-tighter text-primary italic uppercase">11-B Evolution</span>
+            <div class="h-4 w-[1px] bg-slate-200 mx-2"></div>
+            <span
+                class="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full font-black tracking-widest uppercase">Deep
+                Dive v2.0</span>
+        </div>
+        <a href="index.html"
+            class="flex items-center gap-2 text-xs font-black bg-primary text-white px-6 py-2.5 rounded-full hover:scale-105 transition-transform">
+            BACK TO HOME <span class="material-symbols-outlined text-sm">home</span>
+        </a>
+    </nav>
+
+    <main class="max-w-7xl mx-auto pt-52 pb-40 px-10">
+        <header class="mb-40 text-center">
+            <span class="text-accent font-black tracking-[0.4em] uppercase text-[10px] mb-4 block">Archive Minimal Deep
+                Dive</span>
+            <h1 class="text-6xl font-black tracking-tighter mb-8 leading-[1]">
+                11-B 레이아웃 기반<br><span class="text-accent">5가지 심화 제안</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-slate-500 text-lg font-medium leading-relaxed">
+                '본질과 텍스트'라는 컨셉을 유지하면서, 각기 다른 분위기와 권위를 가진 5가지 스타일로 확장했습니다.
+            </p>
+        </header>
+
+        <!-- [V1] 11-B.1 Classical Modern (The Law Review) -->
+        <section class="mb-80">
+            <div class="flex items-center gap-4 mb-16">
+                <span class="text-xs font-black bg-slate-100 px-3 py-1 rounded text-slate-400">CONCEPT 01</span>
+                <h2 class="text-2xl font-black tracking-tight uppercase">클래식 모던 (로리뷰 스타일)</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-primary pt-16">
+                <div class="md:pr-12 md:border-r border-slate-100">
+                    <div class="flex flex-col gap-12">
+                        <div class="group cursor-pointer">
+                            <h3
+                                class="font-serif text-3xl font-black mb-6 leading-tight group-hover:text-legal-blue transition-colors">
+                                "학폭위 절차의 법리적 해석과 실무적 쟁점 분석"</h3>
+                            <div
+                                class="flex justify-between items-center text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                                <span>Procedural / 2024</span>
+                                <span class="material-symbols-outlined text-sm">north_east</span>
+                            </div>
+                        </div>
+                        <div class="group cursor-pointer">
+                            <h3
+                                class="font-serif text-3xl font-black mb-6 leading-tight group-hover:text-legal-blue transition-colors">
+                                "준비 서류가 지니는 증명력에 관한 고찰"</h3>
+                            <div
+                                class="flex justify-between items-center text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                                <span>Documentation / 2024</span>
+                                <span class="material-symbols-outlined text-sm">north_east</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:px-12 md:border-r border-slate-100">
+                    <div class="group cursor-pointer mb-16">
+                        <span class="text-[10px] font-black text-accent uppercase tracking-[0.3em] mb-4 block">Special
+                            Case Study</span>
+                        <h3 class="font-serif text-4xl font-black mb-10 leading-tight">쌍방폭행 소명 시<br><span
+                                class="italic text-slate-400 font-normal">정당방위 인정 요건</span></h3>
+                        <p class="text-sm text-slate-500 font-medium italic leading-relaxed">변호인의 의견서 작성이 결과에 미치는 실질적
+                            영향력에 대하여.</p>
+                    </div>
+                </div>
+                <div class="md:pl-12">
+                    <div class="group cursor-pointer">
+                        <h3
+                            class="font-serif text-3xl font-black mb-6 leading-tight group-hover:text-legal-blue transition-colors">
+                            "디지털 포렌식 데이터의 법적 성격과 활용"</h3>
+                        <div
+                            class="flex justify-between items-center text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                            <span>Digital Law / 2024</span>
+                            <span class="material-symbols-outlined text-sm">north_east</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [V2] 11-B.2 Technical Monospace (The Digital Dossier) -->
+        <section class="mb-80">
+            <div class="flex items-center gap-4 mb-16">
+                <span class="text-xs font-black bg-slate-100 px-3 py-1 rounded text-slate-400">CONCEPT 02</span>
+                <h2 class="text-2xl font-black tracking-tight uppercase tracking-widest">테크니컬 모노 (디지털 도시에 스타일)</h2>
+            </div>
+
+            <div class="bg-slate-50 p-1 rounded-3xl overflow-hidden border border-slate-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+                    <!-- Column 1 -->
+                    <div
+                        class="p-12 md:border-r border-slate-200 bg-white group hover:bg-slate-50 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-between mb-20">
+                            <span class="mono-tag text-[10px] font-black text-slate-300 uppercase tracking-widest">Type:
+                                Procedure</span>
+                            <div class="w-2 h-2 rounded-full bg-slate-200"></div>
+                        </div>
+                        <h3
+                            class="text-2xl font-black tracking-tighter mb-4 leading-tight group-hover:text-primary transition-colors">
+                            학폭위 실제 절차 매뉴얼</h3>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-12">REF /
+                            2024-05-20 / PROC-02</p>
+                        <div class="flex items-center gap-2 text-[10px] font-black text-primary">
+                            OPEN FILE <span class="material-symbols-outlined text-[10px]">arrow_outward</span>
+                        </div>
+                    </div>
+                    <!-- Column 2 (Active/Hot) -->
+                    <div
+                        class="p-12 md:border-r border-slate-200 bg-white group hover:bg-primary transition-all duration-500 cursor-pointer">
+                        <div class="flex items-center justify-between mb-20">
+                            <span
+                                class="mono-tag text-[10px] font-black text-accent uppercase tracking-widest italic font-bold">Recommended
+                                Case</span>
+                            <div class="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
+                        </div>
+                        <h3
+                            class="text-3xl font-black tracking-tighter mb-4 leading-tight text-primary group-hover:text-white transition-colors">
+                            쌍방 폭행 정당방위 성공 전략</h3>
+                        <p
+                            class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-12 group-hover:text-slate-500 transition-colors">
+                            REF / 2024-05-15 / CASE-402</p>
+                        <div class="flex items-center gap-2 text-[10px] font-black text-accent">
+                            DECRYPT DATA <span class="material-symbols-outlined text-[10px]">lock_open</span>
+                        </div>
+                    </div>
+                    <!-- Column 3 -->
+                    <div class="p-12 bg-white group hover:bg-slate-50 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-between mb-20">
+                            <span class="mono-tag text-[10px] font-black text-slate-300 uppercase tracking-widest">Type:
+                                Evidence</span>
+                            <div class="w-2 h-2 rounded-full bg-slate-200"></div>
+                        </div>
+                        <h3
+                            class="text-2xl font-black tracking-tighter mb-4 leading-tight group-hover:text-primary transition-colors">
+                            사이버폭력 증거 수집 가이드</h3>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-12">REF /
+                            2024-05-12 / DIGIT-901</p>
+                        <div class="flex items-center gap-2 text-[10px] font-black text-primary">
+                            OPEN FILE <span class="material-symbols-outlined text-[10px]">arrow_outward</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [V3] 11-B.3 Linear Timeline (The Systemic Archive) -->
+        <section class="mb-80">
+            <div class="flex items-center gap-4 mb-16">
+                <span class="text-xs font-black bg-slate-100 px-3 py-1 rounded text-slate-400">CONCEPT 03</span>
+                <h2 class="text-2xl font-black tracking-tight uppercase">리니어 아카이브 (타임라인 스타일)</h2>
+            </div>
+
+            <div class="max-w-4xl space-y-0">
+                <div
+                    class="group flex gap-20 p-10 hover:bg-slate-50 transition-colors border-b border-slate-100 cursor-pointer">
+                    <div class="w-32 flex-shrink-0">
+                        <span
+                            class="mono-tag text-[10px] font-black text-slate-300 group-hover:text-primary transition-colors tracking-widest">PROCEDURE</span>
+                        <div class="h-[1px] w-full bg-slate-100 mt-4 group-hover:bg-primary transition-all"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-black mb-4 tracking-tighter">학폭위 절차 실무 매뉴얼 입문</h3>
+                        <p class="text-sm text-slate-400 font-bold uppercase tracking-widest">May 20, 2024 • ID. 102-A
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="group flex gap-20 p-10 hover:bg-slate-50 transition-colors border-b border-slate-100 cursor-pointer">
+                    <div class="w-32 flex-shrink-0">
+                        <span
+                            class="mono-tag text-[10px] font-black text-slate-300 group-hover:text-accent transition-colors tracking-widest">CASE
+                            STORY</span>
+                        <div class="h-[1px] w-full bg-slate-100 mt-4 group-hover:bg-accent transition-all"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-black mb-4 tracking-tighter text-accent italic">쌍방폭행 정당방위 판결문 분석</h3>
+                        <p class="text-sm text-slate-400 font-bold uppercase tracking-widest">May 15, 2024 • ID.
+                            SUCCESS-402</p>
+                    </div>
+                </div>
+                <div
+                    class="group flex gap-20 p-10 hover:bg-slate-50 transition-colors border-b border-slate-100 cursor-pointer">
+                    <div class="w-32 flex-shrink-0">
+                        <span
+                            class="mono-tag text-[10px] font-black text-slate-300 group-hover:text-primary transition-colors tracking-widest">DIGITAL</span>
+                        <div class="h-[1px] w-full bg-slate-100 mt-4 group-hover:bg-primary transition-all"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-black mb-4 tracking-tighter">디지털 증거의 법적 효력 상실 원인</h3>
+                        <p class="text-sm text-slate-400 font-bold uppercase tracking-widest">May 12, 2024 • ID.
+                            DIGIT-805</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [V4] 11-B.4 Bold Minimal (The Iconic Grid) -->
+        <section class="mb-80">
+            <div class="flex items-center gap-4 mb-24">
+                <span class="text-xs font-black bg-slate-100 px-3 py-1 rounded text-slate-400">CONCEPT 04</span>
+                <h2 class="text-2xl font-black tracking-tight uppercase italic">볼드 미니멀 (아이코닉 그리드)</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="group cursor-pointer">
+                    <div
+                        class="text-8xl font-black text-slate-50 mb-4 group-hover:text-accent group-hover:-translate-y-4 transition-all duration-700 leading-none select-none">
+                        01</div>
+                    <h3 class="text-2xl font-black tracking-tighter mb-4 leading-tight border-b-2 border-primary pb-4">
+                        학폭위 실제 절차</h3>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Procedure Guide /
+                        v2.1</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div
+                        class="text-8xl font-black text-slate-50 mb-4 group-hover:text-accent group-hover:-translate-y-4 transition-all duration-700 leading-none select-none">
+                        02</div>
+                    <h3 class="text-2xl font-black tracking-tighter mb-4 leading-tight border-b-2 border-primary pb-4">
+                        쌍방폭행 소명전략</h3>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Case Winner / v1.5
+                    </p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div
+                        class="text-8xl font-black text-slate-50 mb-4 group-hover:text-accent group-hover:-translate-y-4 transition-all duration-700 leading-none select-none">
+                        03</div>
+                    <h3 class="text-2xl font-black tracking-tighter mb-4 leading-tight border-b-2 border-primary pb-4">
+                        사이버폭력 대응법</h3>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Digital Security /
+                        v4.0</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div
+                        class="text-8xl font-black text-slate-50 mb-4 group-hover:text-accent group-hover:-translate-y-4 transition-all duration-700 leading-none select-none">
+                        04</div>
+                    <h3 class="text-2xl font-black tracking-tighter mb-4 leading-tight border-b-2 border-primary pb-4">
+                        학생 권위 보호 지침</h3>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest italic">Rights Protection
+                        / v1.0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- [V5] 11-B.5 Bordered Editorial (The Premium Index) -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-24">
+                <span class="text-xs font-black bg-slate-100 px-3 py-1 rounded text-slate-400">CONCEPT 05</span>
+                <h2 class="text-2xl font-black tracking-tight uppercase">보더 에디토리얼 (프리미엄 인덱스)</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border-y border-primary">
+                <div
+                    class="lg:col-span-4 p-12 border-b lg:border-b-0 lg:border-r border-primary hover:bg-primary hover:text-white transition-all duration-500 cursor-pointer group">
+                    <span class="text-[10px] font-black uppercase tracking-[0.4em] mb-12 block">Section 01</span>
+                    <h3
+                        class="text-5xl font-black tracking-tighter italic mb-20 leading-none group-hover:translate-x-6 transition-transform">
+                        Procedural<br>Knowledge</h3>
+                    <div
+                        class="flex justify-between items-center text-[10px] font-black uppercase opacity-40 group-hover:opacity-100">
+                        <span>Archive Index</span>
+                        <span class="material-symbols-outlined text-4xl">arrow_right_alt</span>
+                    </div>
+                </div>
+                <div
+                    class="lg:col-span-4 p-12 border-b lg:border-b-0 lg:border-r border-primary hover:bg-accent hover:text-white transition-all duration-500 cursor-pointer group">
+                    <span class="text-[10px] font-black uppercase tracking-[0.4em] mb-12 block">Section 02</span>
+                    <h3
+                        class="text-5xl font-black tracking-tighter italic mb-20 leading-none group-hover:translate-x-6 transition-transform">
+                        Strategic<br>Defense</h3>
+                    <div
+                        class="flex justify-between items-center text-[10px] font-black uppercase opacity-40 group-hover:opacity-100">
+                        <span>Archive Index</span>
+                        <span class="material-symbols-outlined text-4xl">arrow_right_alt</span>
+                    </div>
+                </div>
+                <div
+                    class="lg:col-span-4 p-12 hover:bg-primary hover:text-white transition-all duration-500 cursor-pointer group">
+                    <span class="text-[10px] font-black uppercase tracking-[0.4em] mb-12 block">Section 03</span>
+                    <h3
+                        class="text-5xl font-black tracking-tighter italic mb-20 leading-none group-hover:translate-x-6 transition-transform">
+                        Digital<br>Evidence</h3>
+                    <div
+                        class="flex justify-between items-center text-[10px] font-black uppercase opacity-40 group-hover:opacity-100">
+                        <span>Archive Index</span>
+                        <span class="material-symbols-outlined text-4xl">arrow_right_alt</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-primary text-white py-32 px-10 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-accent/5 blur-[120px]"></div>
+        <div class="relative z-10 flex flex-col items-center gap-8">
+            <div class="text-4xl font-black tracking-tighter italic">Pivotal Legal Lab.</div>
+            <p class="text-[11px] font-black uppercase tracking-[0.6em] text-white/30">11-B Evolution Portfolio • v2.0
+            </p>
+            <div class="h-12 w-[1px] bg-white/10 mt-6"></div>
+            <div class="text-xs text-white/30 max-w-xl leading-relaxed font-medium">
+                변호사님께서 선택하신 11-B '아카이브 미니멀' 레이아웃을 기반으로,<br>시각적 정체성과 정보 전달의 권위를 극대화한 5가지 파생형 디자인입니다.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

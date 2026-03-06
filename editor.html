@@ -193,9 +193,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const pid = urlParams.get('id');
+            let pid = urlParams.get('id');
             const typeParam = urlParams.get('type');
             let currentTags = [];
+
+            // 로컬 서버에서 파라미터 유실되는 경우 대비
+            if (!pid) {
+                pid = localStorage.getItem('last_post_id');
+                if (pid) console.log('PID recovered from localStorage:', pid);
+            }
 
             // --- Quill Setup ---
             const toolbarOptions = [
@@ -279,7 +285,7 @@
                 }
             });
 
-            // --- Thumbnail Handling with Drag & Drop + Resize ---
+            // --- Thumbnail Handling ---
             const fileInput = document.getElementById('post-image-file');
             const imageZone = document.getElementById('image-upload-zone');
             const preview = document.getElementById('thumbnail-preview');
@@ -310,7 +316,6 @@
                 const zoneSize = imageZone.offsetWidth;
                 const ratio = preview.naturalWidth / preview.naturalHeight;
 
-                // Always fill the container: set the smaller dimension to 100%
                 if (ratio > 1) { // Landscape
                     preview.style.height = '100%';
                     preview.style.width = 'auto';
@@ -319,16 +324,7 @@
                     preview.style.height = 'auto';
                 }
 
-                // Center initially
-                const rect = preview.getBoundingClientRect();
-                imgState = {
-                    x: 0,
-                    y: 0,
-                    scale: 1,
-                    isDragging: false,
-                    startX: 0,
-                    startY: 0
-                };
+                imgState = { x: 0, y: 0, scale: 1, isDragging: false, startX: 0, startY: 0 };
                 zoomSlider.value = 1;
                 updatePreviewStyles();
             }
@@ -337,25 +333,12 @@
                 preview.style.transform = `translate(${imgState.x}px, ${imgState.y}px) scale(${imgState.scale})`;
             }
 
-            // Drag & Drop events
             imageZone.addEventListener('dragover', (e) => { e.preventDefault(); imageZone.classList.add('border-primary'); });
             imageZone.addEventListener('dragleave', () => imageZone.classList.remove('border-primary'));
             imageZone.addEventListener('drop', (e) => { e.preventDefault(); imageZone.classList.remove('border-primary'); handleFile(e.dataTransfer.files[0]); });
             imageZone.addEventListener('click', (e) => { if (!imgState.isDragging && (e.target === imageZone || e.target === uploadPlaceholder || e.target.parentNode === uploadPlaceholder)) fileInput.click(); });
             fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
-
-            // Zoom & Move events
             zoomSlider.addEventListener('input', (e) => { imgState.scale = parseFloat(e.target.value); updatePreviewStyles(); });
-
-            // Mouse wheel zoom
-            imageZone.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                const delta = e.deltaY > 0 ? -0.05 : 0.05;
-                const newScale = Math.min(Math.max(0.5, imgState.scale + delta), 5);
-                imgState.scale = newScale;
-                zoomSlider.value = newScale;
-                updatePreviewStyles();
-            }, { passive: false });
 
             preview.addEventListener('mousedown', (e) => { e.preventDefault(); imgState.isDragging = true; imgState.startX = e.clientX - imgState.x; imgState.startY = e.clientY - imgState.y; preview.classList.add('cursor-grabbing'); });
             window.addEventListener('mousemove', (e) => { if (imgState.isDragging) { imgState.x = e.clientX - imgState.startX; imgState.y = e.clientY - imgState.startY; updatePreviewStyles(); } });
@@ -367,21 +350,15 @@
                 const ctx = canvas.getContext('2d');
                 const zoneSize = imageZone.offsetWidth;
                 const scale = 600 / zoneSize;
-
-                // Calculate position relative to center
                 const rect = preview.getBoundingClientRect();
                 const zoneRect = imageZone.getBoundingClientRect();
-
                 const drawX = (rect.left - zoneRect.left) * scale;
                 const drawY = (rect.top - zoneRect.top) * scale;
                 const drawW = rect.width * scale;
                 const drawH = rect.height * scale;
-
                 ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, 600, 600);
                 ctx.drawImage(preview, drawX, drawY, drawW, drawH);
-
-                const finalData = canvas.toDataURL('image/jpeg', 0.8);
-                document.getElementById('post-image').value = finalData;
+                document.getElementById('post-image').value = canvas.toDataURL('image/jpeg', 0.8);
                 alert('썸네일 크기 조정이 적용되었습니다.');
             });
 
@@ -397,11 +374,9 @@
                         <button type="button" class="remove-tag-btn text-rose-500 hover:text-rose-400 font-black" data-tag="${tag}">×</button>
                     </span>
                 `).join('');
-
                 document.querySelectorAll('.remove-tag-btn').forEach(btn => {
                     btn.addEventListener('click', () => {
-                        const tagToRemove = btn.getAttribute('data-tag');
-                        currentTags = currentTags.filter(t => t !== tagToRemove);
+                        currentTags = currentTags.filter(t => t !== btn.getAttribute('data-tag'));
                         renderTags();
                     });
                 });
@@ -416,12 +391,7 @@
                 }
             }
 
-            tagInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    addTag();
-                }
-            });
+            tagInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } });
             addTagBtn.addEventListener('click', addTag);
 
             // --- Init Editor ---
@@ -431,39 +401,61 @@
                     return;
                 }
 
-                const cats = await CMS.getCategories();
-                const select = document.getElementById('category-select');
-                cats.forEach(c => {
-                    const opt = document.createElement('option');
-                    opt.value = opt.innerText = c;
-                    select.appendChild(opt);
-                });
+                try {
+                    const cats = await CMS.getCategories();
+                    const select = document.getElementById('category-select');
+                    select.innerHTML = '<option value="">이전 카테고리 선택</option>';
+                    cats.forEach(c => {
+                        const opt = document.createElement('option');
+                        opt.value = opt.innerText = c;
+                        select.appendChild(opt);
+                    });
 
-                select.addEventListener('change', (e) => {
-                    if (e.target.value) document.getElementById('post-category').value = e.target.value;
-                });
+                    select.addEventListener('change', (e) => {
+                        if (e.target.value) document.getElementById('post-category').value = e.target.value;
+                    });
 
-                if (typeParam) document.getElementById('post-type').value = typeParam;
+                    if (typeParam) document.getElementById('post-type').value = typeParam;
 
-                if (pid) {
-                    document.getElementById('post-id').value = pid;
-                    const post = await CMS.getPost(pid);
-                    if (post) {
-                        document.getElementById('post-type').value = post.type;
-                        document.getElementById('post-category').value = post.category;
-                        document.getElementById('post-title').value = post.title;
-                        document.getElementById('post-summary').value = post.summary;
-                        contentEditor.root.innerHTML = post.content;
-                        if (post.image) {
-                            const preview = document.getElementById('thumbnail-preview');
-                            preview.src = post.image;
-                            preview.classList.remove('hidden');
-                            document.getElementById('upload-placeholder').classList.add('hidden');
-                            document.getElementById('post-image').value = post.image;
+                    if (pid && pid !== 'null' && pid !== 'undefined') {
+                        console.log('Edit mode: Loading data for ID', pid);
+                        document.getElementById('post-id').value = pid;
+
+                        const pubBtn = document.getElementById('publish-btn');
+                        if (pubBtn) pubBtn.innerText = '원고 수정 완료';
+
+                        const post = await CMS.getPost(pid);
+                        if (post) {
+                            console.log('Post data loaded:', post.title);
+                            document.getElementById('post-type').value = post.type || 'blog';
+                            document.getElementById('post-category').value = post.category || '';
+                            document.getElementById('post-title').value = post.title || '';
+                            document.getElementById('post-summary').value = post.summary || '';
+
+                            if (post.content && contentEditor) {
+                                contentEditor.clipboard.dangerouslyPasteHTML(post.content);
+                            }
+
+                            if (post.image) {
+                                preview.src = post.image;
+                                cropContainer.classList.remove('hidden');
+                                uploadPlaceholder.classList.add('hidden');
+                                zoomControl.classList.remove('hidden');
+                                document.getElementById('post-image').value = post.image;
+
+                                setTimeout(() => {
+                                    resetImage();
+                                }, 400);
+                            }
+
+                            currentTags = post.tags || [];
+                            renderTags();
+                        } else {
+                            console.warn('No post found with ID:', pid);
                         }
-                        currentTags = post.tags || [];
-                        renderTags();
                     }
+                } catch (error) {
+                    console.error('Init error:', error);
                 }
             }
             init();
@@ -475,7 +467,6 @@
             postForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const originalText = publishBtn.innerText;
-
                 try {
                     publishBtn.innerText = '발행 중...';
                     publishBtn.disabled = true;
@@ -494,16 +485,14 @@
                     };
 
                     const savedPost = await CMS.savePost(post);
-
                     if (savedPost && savedPost.id) {
                         alert('원고가 성공적으로 발행되었습니다.');
                         window.location.href = `view.html?id=${savedPost.id}`;
-                    } else {
-                        throw new Error('저장된 데이터의 ID가 없습니다.');
                     }
                 } catch (err) {
                     console.error('Save error:', err);
-                    alert('발행 중 오류가 발생했습니다: ' + (err.message || '다시 시도해주세요.'));
+                    alert('오류 발생: ' + err.message);
+                } finally {
                     publishBtn.innerText = originalText;
                     publishBtn.disabled = false;
                 }

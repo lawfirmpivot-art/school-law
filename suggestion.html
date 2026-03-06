@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학교폭력 대응 7단계 레이아웃 제안 - Ver.5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fcfcfc;
+        }
+
+        .step-num {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bg-text-giant {
+            position: absolute;
+            font-size: 10rem;
+            font-weight: 900;
+            opacity: 0.03;
+            line-height: 1;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="pb-40">
+    <div class="max-w-[1400px] mx-auto py-20 px-6 font-display">
+        <header class="mb-24 text-center">
+            <span class="text-[10px] font-black tracking-[0.4em] text-blue-600 uppercase mb-4 block">Ultimate Selection
+                / Horizontal Focus</span>
+            <h1 class="text-5xl font-black tracking-tighter text-slate-900 mb-6">학교폭력 대응 7단계<br>레이아웃 제안 v5</h1>
+            <div class="w-16 h-1 bg-blue-600 mx-auto mb-6"></div>
+            <p class="text-slate-500 text-lg">기존 선호 디자인(1-4)과 이미지 스타일을 완벽 구현한 수평 레이아웃 5선입니다.</p>
+        </header>
+
+        <!-- [KEEP] Layout 01: Interactive Stepper -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10">
+                <span class="bg-blue-600 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout
+                    01</span>
+                <h2 class="text-2xl font-black italic">인터랙티브 스텝퍼 (Interactive Stepper)</h2>
+            </div>
+            <div class="bg-white shadow-2xl overflow-hidden rounded-2xl border border-slate-200">
+                <div class="flex border-b border-slate-100 overflow-x-auto bg-slate-50">
+                    <button class="px-8 py-6 border-b-2 border-blue-600 flex-shrink-0 bg-white">
+                        <span class="block text-[10px] font-bold text-blue-600 mb-1">STEP 01</span>
+                        <span class="text-sm font-black italic">증거확보</span>
+                    </button>
+                    <button
+                        class="px-8 py-6 border-b-2 border-transparent hover:bg-white transition-colors flex-shrink-0">
+                        <span class="block text-[10px] font-bold text-slate-400 mb-1">STEP 02</span>
+                        <span class="text-sm font-black italic text-slate-500">사안접수</span>
+                    </button>
+                    <button
+                        class="px-8 py-6 border-b-2 border-transparent hover:bg-white transition-colors flex-shrink-0">
+                        <span class="block text-[10px] font-bold text-slate-400 mb-1">STEP 03..</span>
+                        <span class="text-sm font-black italic text-slate-500">More Steps</span>
+                    </button>
+                </div>
+                <div class="p-16 h-[380px] flex flex-col justify-center">
+                    <div class="max-w-2xl">
+                        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-8">
+                            <span class="material-symbols-outlined text-blue-600 text-3xl">medical_services</span>
+                        </div>
+                        <h3 class="text-3xl font-black tracking-tighter mb-6">1단계: 신고 전 증거 확보 및 상태 점검</h3>
+                        <p class="text-slate-600 text-lg leading-relaxed">증거 수집: 폭력이 발생하면 즉시 객관적인 증거를 모아야 합니다. 신체 폭력은
+                            진단서를, 사이버 폭력은 상대방 ID가 보이는 캡처본을 확보하세요.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [KEEP] Layout 02: Law Office Minimalist -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10">
+                <span class="bg-slate-900 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout
+                    02</span>
+                <h2 class="text-2xl font-black italic">법률 사무소 미니멀리즘 (Minimalist Law)</h2>
+            </div>
+            <div class="bg-white border-t-8 border-t-slate-900 p-16 shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-7 gap-4 mb-16 text-center">
+                    <div class="relative group cursor-pointer">
+                        <div
+                            class="w-10 h-10 border-2 border-slate-900 rounded-full flex items-center justify-center mx-auto mb-4 bg-slate-900 text-white font-bold text-xs shadow-md">
+                            01</div>
+                        <span class="text-[10px] font-black uppercase tracking-tighter">증거확보</span>
+                    </div>
+                    <div class="hidden md:flex items-center text-slate-200">→</div>
+                    <div class="relative group cursor-pointer">
+                        <div
+                            class="w-10 h-10 border-2 border-slate-200 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xs text-slate-400">
+                            02</div>
+                        <span class="text-[10px] font-black uppercase tracking-tighter text-slate-400">사안접수</span>
+                    </div>
+                    <div class="hidden md:flex items-center text-slate-200">...</div>
+                </div>
+                <div class="border-l-2 border-slate-900 pl-12 max-w-4xl">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="material-symbols-outlined text-slate-900 text-4xl">shield_with_heart</span>
+                        <h3 class="text-3xl font-black tracking-tight">Step 01. 신고 전 증거 확보 (골든타임)</h3>
+                    </div>
+                    <div class="space-y-6 text-slate-600">
+                        <p class="text-lg">증거 수집이나 상태 확인 단계에서 전문적인 기록이 향후 학폭위 결정에 큰 영향을 미칩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [KEEP] Layout 03: Vertical Accordion -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10">
+                <span class="bg-indigo-900 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout
+                    03</span>
+                <h2 class="text-2xl font-black italic text-indigo-900">아코디언 익스팬더 (Accordion Expander)</h2>
+            </div>
+            <div class="space-y-4 max-w-4xl mx-auto">
+                <div
+                    class="border border-slate-100 bg-white rounded-xl overflow-hidden hover:border-indigo-200 transition-colors">
+                    <button class="w-full p-8 flex justify-between items-center">
+                        <div class="flex items-center gap-6">
+                            <span class="text-3xl font-black text-slate-100 italic step-num">01</span>
+                            <span class="text-xl font-bold text-slate-600">신고 전 증거 확보 및 상태 점검</span>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">add</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- [KEEP] Layout 04: Pulse Timeline -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10">
+                <span class="bg-sky-900 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout
+                    04</span>
+                <h2 class="text-2xl font-black italic text-sky-900">펄스 타임라인 (Pulse Timeline)</h2>
+            </div>
+            <div class="bg-white p-16 rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
+                <div class="flex flex-col space-y-12">
+                    <div class="flex gap-10">
+                        <div class="flex flex-col items-center">
+                            <div class="w-4 h-4 rounded-full bg-sky-500 ring-4 ring-sky-100 relative">
+                                <span class="absolute inset-0 rounded-full bg-sky-500 animate-ping opacity-75"></span>
+                            </div>
+                        </div>
+                        <div class="pb-12 border-b border-slate-50 w-full">
+                            <h3 class="text-xl font-black text-sky-600 mb-4">1단계: 증거 확보 및 골든타임</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [NEW] Layout 05: The Pure Editorial (Perfect Image Replication) -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10">
+                <span class="bg-slate-900 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout
+                    05 (Image Refined)</span>
+                <h2 class="text-2xl font-black italic text-slate-900">더 퓨어 에디토리얼 (Pure Editorial)</h2>
+            </div>
+            <div
+                class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-x-12 gap-y-20 border-b border-slate-100 pb-20 overflow-x-auto hide-scrollbar">
+                <!-- Step 1 -->
+                <div class="relative group cursor-pointer min-w-[180px]">
+                    <span
+                        class="text-7xl font-black text-slate-50 italic step-num block mb-4 group-hover:text-blue-50 transition-colors">01</span>
+                    <h3
+                        class="text-xl font-black text-slate-900 mb-6 tracking-tighter leading-tight break-keep group-hover:text-blue-600 transition-colors">
+                        학폭위 실제 절차</h3>
+                    <div
+                        class="h-[2px] w-full bg-slate-900 mb-4 transition-transform scale-x-100 group-hover:bg-blue-600">
+                    </div>
+                    <span
+                        class="text-[10px] font-bold text-slate-400 italic block tracking-widest uppercase opacity-70">PROCEDURE
+                        GUIDE / V2.1</span>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative group cursor-pointer min-w-[180px]">
+                    <span class="text-7xl font-black text-slate-50 italic step-num block mb-4">02</span>
+                    <h3 class="text-xl font-black text-slate-900 mb-6 tracking-tighter leading-tight break-keep">신고 전 증거
+                        확보</h3>
+                    <div class="h-[2px] w-full bg-slate-900 mb-4"></div>
+                    <span
+                        class="text-[10px] font-bold text-slate-400 italic block tracking-widest uppercase opacity-70">EVIDENCE
+                        COLLECT / V1.5</span>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative group cursor-pointer min-w-[180px]">
+                    <span class="text-7xl font-black text-slate-50 italic step-num block mb-4">03</span>
+                    <h3 class="text-xl font-black text-slate-900 mb-6 tracking-tighter leading-tight break-keep">사안 접수 및
+                        대응</h3>
+                    <div class="h-[2px] w-full bg-slate-900 mb-4"></div>
+                    <span
+                        class="text-[10px] font-black text-slate-400 italic block tracking-widest uppercase opacity-70">CASE
+                        FILING / V4.0</span>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative group cursor-pointer min-w-[180px]">
+                    <span class="text-7xl font-black text-slate-50 italic step-num block mb-4">04</span>
+                    <h3 class="text-xl font-black text-slate-900 mb-6 tracking-tighter leading-tight break-keep">피해학생
+                        긴급보호</h3>
+                    <div class="h-[2px] w-full bg-slate-900 mb-4"></div>
+                    <span
+                        class="text-[10px] font-bold text-slate-400 italic block tracking-widest uppercase opacity-70">URGENT
+                        CARE / V1.0</span>
+                </div>
+                <!-- Steps 5, 6, 7 would follow the same pattern in the grid -->
+            </div>
+            <div class="mt-8 text-right text-slate-300 italic text-[11px] tracking-widest animate-pulse">Scroll Right
+                for Stages 5 to 7 →</div>
+        </section>
+
+        <!-- [NEW] Layout 06: Sequential Block Index -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10">
+                <span class="bg-blue-600 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout 06
+                    (New)</span>
+                <h2 class="text-2xl font-black italic text-blue-600">시퀀셜 블록 인덱스 (Block Index)</h2>
+            </div>
+            <div
+                class="flex flex-nowrap border border-slate-900 divide-x divide-slate-900 rounded-sm overflow-hidden bg-white shadow-xl">
+                <div class="p-12 min-w-[20%] group cursor-pointer hover:bg-slate-900 hover:text-white transition-all">
+                    <div class="flex justify-between items-start mb-10">
+                        <span
+                            class="text-6xl font-black italic step-num opacity-10 group-hover:opacity-100 transition-opacity">01</span>
+                        <span class="material-symbols-outlined text-slate-300 group-hover:text-white">north_east</span>
+                    </div>
+                    <h3
+                        class="text-lg font-black tracking-tighter leading-none mb-4 group-hover:scale-110 origin-left transition-transform">
+                        증거 확보<br>& 상태 점검</h3>
+                    <div
+                        class="h-1 w-8 bg-slate-900 group-hover:bg-white group-hover:w-full transition-all duration-500">
+                    </div>
+                </div>
+                <!-- Repeat for other blocks in same row -->
+                <div
+                    class="p-12 min-w-[20%] group cursor-pointer hover:bg-slate-900 hover:text-white transition-all bg-slate-50">
+                    <div class="flex justify-between items-start mb-10">
+                        <span class="text-6xl font-black italic step-num opacity-10 group-hover:opacity-100">02</span>
+                        <span class="material-symbols-outlined text-slate-200">emergency</span>
+                    </div>
+                    <h3 class="text-lg font-black tracking-tighter leading-none mb-4">사안 접수<br>& 초기 대응</h3>
+                    <div class="h-1 w-8 bg-slate-200 group-hover:bg-white transition-all"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [NEW] Layout 07: Modern Underline Tabs -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10">
+                <span class="bg-indigo-900 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout
+                    07 (New)</span>
+                <h2 class="text-2xl font-black italic text-indigo-900">모던 언더라인 탭 (Underline Tabs)</h2>
+            </div>
+            <div class="flex justify-between border-b-2 border-slate-100 relative">
+                <div class="flex-1 pb-10 group cursor-pointer border-b-4 border-indigo-600">
+                    <span class="text-[10px] font-black italic text-indigo-600 block mb-2 tracking-widest">STAGE
+                        01</span>
+                    <h3 class="text-xl font-black text-slate-900 tracking-tighter">증거 확보 및 점검</h3>
+                </div>
+                <div
+                    class="flex-1 pb-10 px-8 group cursor-pointer border-b-4 border-transparent hover:border-slate-200 transition-all">
+                    <span
+                        class="text-[10px] font-black italic text-slate-300 block mb-2 tracking-widest group-hover:text-slate-500">STAGE
+                        02</span>
+                    <h3 class="text-xl font-bold text-slate-400 group-hover:text-slate-600 tracking-tighter">사안 접수 및
+                        학교대응</h3>
+                </div>
+                <div class="flex-1 pb-10 px-8 group cursor-pointer border-b-4 border-transparent">
+                    <span class="text-[10px] font-black italic text-slate-300 block mb-2 tracking-widest">STAGE
+                        03</span>
+                    <h3 class="text-xl font-bold text-slate-300 tracking-tighter text-slate-200">...</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- [NEW] Layout 08: Minimal Icon Spread -->
+        <section class="mb-40">
+            <div class="flex items-center gap-4 mb-10">
+                <span class="bg-rose-900 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout 08
+                    (New)</span>
+                <h2 class="text-2xl font-black italic text-rose-900">미니멀 아이콘 스프레드 (Icon Spread)</h2>
+            </div>
+            <div class="flex justify-around items-center py-12 bg-white rounded-full border border-slate-100 shadow-sm">
+                <div class="flex flex-col items-center gap-4 px-10 group cursor-pointer">
+                    <div
+                        class="w-16 h-16 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center transition-all group-hover:bg-rose-600 group-hover:text-white group-hover:scale-110 shadow-lg shadow-rose-100 group-hover:shadow-rose-300">
+                        <span class="material-symbols-outlined text-3xl font-light">fact_check</span>
+                    </div>
+                    <span class="text-[9px] font-black text-rose-300 tracking-widest">01 EVIDENCE</span>
+                </div>
+                <div class="h-10 w-px bg-slate-100"></div>
+                <div class="flex flex-col items-center gap-4 px-10 group cursor-pointer">
+                    <div
+                        class="w-16 h-16 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center transition-all group-hover:bg-slate-900 group-hover:text-white">
+                        <span class="material-symbols-outlined text-3xl font-light">campaign</span>
+                    </div>
+                    <span class="text-[9px] font-black text-slate-200 tracking-widest uppercase">02 Reporting</span>
+                </div>
+                <div class="h-10 w-px bg-slate-100"></div>
+                <div class="flex flex-col items-center gap-4 px-10 opacity-20">
+                    <span class="material-symbols-outlined text-slate-400">more_horiz</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- [NEW] Layout 09: Split Contrast Row (Modern Legal) -->
+        <section class="mb-20">
+            <div class="flex items-center gap-4 mb-20 px-10">
+                <span class="bg-emerald-900 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Layout
+                    09 (New)</span>
+                <h2 class="text-2xl font-black italic text-emerald-900">스플릿 컨트라스트 (Contrast Row)</h2>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-0 border border-slate-950">
+                <div
+                    class="bg-slate-950 text-white p-16 flex flex-col justify-between min-h-[400px] border-r border-slate-800">
+                    <span class="text-6xl font-black italic step-num text-emerald-500 opacity-50">01</span>
+                    <div>
+                        <h3 class="text-3xl font-black tracking-tighter mb-4 italic">Evidence<br>Procurement</h3>
+                        <p class="text-slate-400 text-sm">신고 전 골든타임을 확보하여 객관적 증거를 수집하는 단계입니다.</p>
+                    </div>
+                </div>
+                <div
+                    class="bg-white text-slate-900 p-16 flex flex-col justify-between min-h-[400px] border-r border-slate-100 group hover:bg-emerald-50 transition-colors">
+                    <span
+                        class="text-6xl font-black italic step-num text-slate-100 group-hover:text-emerald-200">02</span>
+                    <div>
+                        <h3 class="text-3xl font-black tracking-tighter mb-4 italic">Case Intake<br>& Reporting</h3>
+                        <p class="text-slate-500 text-sm italic">학교 및 신고센터 접수 단계.</p>
+                    </div>
+                </div>
+                <!-- ... -->
+                <div
+                    class="bg-slate-50 p-16 flex flex-col justify-center items-center opacity-30 italic font-black text-slate-200 tracking-widest">
+                    STAGES 3 TO 7
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=Outfit:wght@500;800&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -56,6 +56,43 @@
         html {
             scroll-behavior: smooth;
         }
+        /* Typing Effect */
+        :root {
+            --cursor-color: #1a1a1a;
+        }
+        .dark {
+            --cursor-color: white;
+        }
+        .typing-line {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: .15em solid transparent; /* Initially hidden */
+            width: 0;
+            vertical-align: bottom;
+            padding-right: 0.05em;
+        }
+        .typing-line.active {
+            border-right-color: var(--cursor-color);
+        }
+        .typing-line.finished {
+            border-right-color: transparent !important;
+            width: max-content;
+        }
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 100% }
+        }
+        @keyframes blink-caret {
+          from, to { border-color: transparent }
+          50% { border-color: var(--cursor-color); }
+        }
+        .animate-typing {
+            animation: typing 2s steps(40, end) forwards, blink-caret .75s step-end infinite;
+        }
+        .animate-typing-short {
+            animation: typing 1s steps(20, end) forwards, blink-caret .75s step-end infinite;
+        }
     </style>
 </head>
 
@@ -96,14 +133,9 @@
                 <div
                     class="mono-tag border border-slate-300 dark:border-slate-700 rounded-full px-4 py-1 text-[10px] uppercase tracking-tighter">
                     School Violence Specialist</div>
-                <div class="ml-auto hidden md:block">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white">
-                        <span class="material-symbols-outlined">arrow_downward</span>
-                    </div>
-                </div>
             </div>
             <h1
-                class="hero-title text-[clamp(6rem,22vw,18rem)] font-black text-primary dark:text-white mb-16 leading-[0.8]">
+                class="hero-title text-[clamp(4.5rem,16vw,13rem)] font-black text-primary dark:text-white mb-12 leading-[0.8]">
                 학교폭력<br />해설집
             </h1>
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mt-12 items-start">
@@ -114,8 +146,9 @@
                 </div>
                 <div class="md:col-span-8 flex flex-col justify-between h-full">
                     <div>
-                        <p class="text-3xl md:text-5xl font-light leading-tight mb-8">
-                            안녕하세요, 학교폭력 사건의 명확한 해법을 제시하는 <span class="font-bold">법률 전문가</span>입니다.
+                        <p class="text-2xl md:text-3xl lg:text-[2.2rem] font-light leading-[1.4] mb-8">
+                            <span id="type-line-1" class="typing-line">안녕하세요, 학교폭력 사건의 명확한 해법을 제시하는</span><br />
+                            <span id="type-line-2" class="typing-line"><span class="font-bold">김경수 변호사</span>입니다.</span>
                         </p>
                         <div class="mb-8 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-sm border-l-4 border-primary">
                             <span
@@ -143,7 +176,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl">
+                        <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
                             학교폭력은 단순한 갈등을 넘어 아이들의 미래가 달린 중대한 사안입니다. 법률 전문성을 바탕으로, 복잡한 절차 속에서 가장 현명한 길을 안내합니다.
                         </p>
                     </div>
@@ -157,62 +190,144 @@
                 </div>
             </div>
         </section>
-        <div
-            class="border-y border-slate-200 dark:border-slate-800 py-6 overflow-hidden whitespace-nowrap bg-slate-50 dark:bg-slate-900">
-            <div class="inline-block animate-marquee uppercase text-[10px] font-bold tracking-[0.3em] px-4">
-                GUIDEBOOK • CASE ANALYSIS • NEWS INSIGHT • LEGAL DEFENSE • CONSULTATION •
-                GUIDEBOOK • CASE ANALYSIS • NEWS INSIGHT • LEGAL DEFENSE • CONSULTATION •
-                GUIDEBOOK • CASE ANALYSIS • NEWS INSIGHT • LEGAL DEFENSE • CONSULTATION •
-            </div>
-        </div>
-        <section class="px-6 md:px-12 py-24 max-w-7xl mx-auto" id="guidebook">
-            <div class="flex justify-between items-end mb-16 border-b border-slate-200 dark:border-slate-800 pb-8">
+
+        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto" id="guidebook">
+            <div class="mb-16 border-b border-slate-200 dark:border-slate-800 pb-8 flex justify-between items-end">
                 <div>
-                    <span class="mono-tag text-xs opacity-50 block mb-2">01 / SCHOOL VIOLENCE GUIDEBOOK</span>
-                    <h2 class="text-4xl font-bold">학교폭력 해설집</h2>
+                    <span class="mono-tag text-xs opacity-50 block mb-2 uppercase tracking-widest">01 / Educational
+                        Archive</span>
+                    <h2 class="text-4xl font-black tracking-tighter italic uppercase">학교폭력 해설집</h2>
                 </div>
-                <a class="text-sm font-bold border-b-2 border-primary pb-1" href="blog.html">VIEW ALL POSTS</a>
+                <a class="text-xs font-black border-b-2 border-primary pb-1 uppercase tracking-widest"
+                    href="blog.html">더보기 →</a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a class="group cursor-pointer" href="blog.html">
-                    <div class="aspect-square bg-slate-100 dark:bg-slate-900 mb-6 overflow-hidden rounded-sm relative">
-                        <img alt="Legal documents"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgmgUpIhuOZxk-pBocef_MJk9ocz1aOLcbJRdjzIYpN9e_5dgRi1mHIUvUDSwjYCbf5PYGK2jZrWbUgp1wEpT-MWxDD8lEUqRHSVjkHhrlWqPEmWIaUt87CvPy-kFk85aw4-SbFqkxJTSny59c01P13fzjNIAq6OTnkP-bsXbmw4JEK9b0icmPxtT_F4gS25iSYx9faQlRXGjA8FNAopK2put0FXhDiRKZtXTTqPSn7cAGvOwZkafcAiWQBfIaac19abwB-Z4jBg" />
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-primary dark:border-white overflow-hidden">
+                <!-- Section 01: Victim -->
+                <div class="border-b lg:border-b-0 lg:border-r border-primary dark:border-white hover:bg-[#1A66B0] hover:text-white transition-all duration-500 cursor-pointer group"
+                    onclick="location.href='victim_protection.html'">
+                    <div class="p-8 h-full flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase tracking-[0.4em] mb-10 block text-slate-400 group-hover:text-white/40">Section
+                                01</span>
+                            <h3
+                                class="text-3xl font-black tracking-tighter italic mb-3 leading-tight group-hover:translate-x-3 transition-transform">
+                                <span
+                                    class="text-[#1A66B0] group-hover:text-white transition-colors">피해학생</span><br>학교폭력
+                                해설집
+                            </h3>
+                            <p class="text-[10px] font-bold text-slate-400 group-hover:text-white/60">피해 학생 보호 조치 및 실무
+                                지침 가이드</p>
+                        </div>
+                        <div class="mt-6 mb-auto transition-all duration-500">
+                            <div class="inline-block border border-primary group-hover:border-white px-4 py-2">
+                                <span
+                                    class="text-[10px] font-black tracking-widest uppercase text-primary group-hover:text-white">눌러서
+                                    확인하기</span>
+                            </div>
+                        </div>
                         <div
-                            class="absolute top-4 left-4 bg-white/90 dark:bg-black/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
-                            Procedural Guide</div>
+                            class="flex justify-between items-center text-[10px] font-black uppercase opacity-40 group-hover:opacity-100 pt-6">
+                            <span class="tracking-widest font-[Outfit]">Victim Protection</span>
+                            <span class="material-symbols-outlined text-3xl">shield_person</span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 group-hover:underline">학폭위 절차, 이것만은 꼭 알고 대응하세요</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">학교폭력 대책심의위원회 개최 전 반드시 준비해야 할 서류와
-                        진술 방식에 대한 실무 가이드입니다.</p>
-                </a>
-                <a class="group cursor-pointer" href="blog.html">
-                    <div class="aspect-square bg-slate-100 dark:bg-slate-900 mb-6 overflow-hidden rounded-sm relative">
-                        <img alt="Scale of justice"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjKUvTKkgTmS-bA6QvH5E8glPlPXMSu_Bz9T3L7oxSI59u7wWEyr1a4D7vTTRf3-JddbysNPZnYLVVq3uTCOA9T9Wq8Wb_PwcvbGbNQl4F3S1q1Nz7Tx-CjWZ0vd4JtVWZG9WL-Jg2T4MSBXBue1qBcHFr5Ig0fSWGYQ8EEwmgVjJdksp678c2RldtaF2eIA0XsVgfxEZ-ckQyC5Jm2g6KLO3fE41u0L__9Q7Bb3ECL4lSGN9Nsw4T40tuTKPsXAuUs-vTZdJmng" />
+                </div>
+
+                <!-- Section 02: Aggressor -->
+                <div class="border-b lg:border-b-0 lg:border-r border-primary dark:border-white hover:bg-[#b91c1c] hover:text-white transition-all duration-500 cursor-pointer group"
+                    onclick="location.href='blog.html?category=defense'">
+                    <div class="p-8 h-full flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase tracking-[0.4em] mb-10 block text-slate-400 group-hover:text-white/40">Section
+                                02</span>
+                            <h3
+                                class="text-3xl font-black tracking-tighter italic mb-3 leading-tight group-hover:translate-x-3 transition-transform">
+                                <span
+                                    class="text-[#b91c1c] group-hover:text-white transition-colors">가해학생</span><br>학교폭력
+                                해설집
+                            </h3>
+                            <p class="text-[10px] font-bold text-slate-400 group-hover:text-white/60">징계 수위 방어 및 억울한 혐의
+                                소명 전략</p>
+                        </div>
+                        <div class="mt-6 mb-auto transition-all duration-500">
+                            <div class="inline-block border border-primary group-hover:border-white px-4 py-2">
+                                <span
+                                    class="text-[10px] font-black tracking-widest uppercase text-primary group-hover:text-white">눌러서
+                                    확인하기</span>
+                            </div>
+                        </div>
                         <div
-                            class="absolute top-4 left-4 bg-white/90 dark:bg-black/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
-                            Case Study</div>
+                            class="flex justify-between items-center text-[10px] font-black uppercase opacity-40 group-hover:opacity-100 pt-6">
+                            <span class="tracking-widest font-[Outfit]">Defender Rights</span>
+                            <span class="material-symbols-outlined text-3xl">gavel</span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 group-hover:underline">쌍방 폭행 주장 시 대응 전략</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">억울하게 가해자로 지목된 경우, 정당방위와 피해 사실을
-                        입증하기 위한 법적 검토 사항을 정리했습니다.</p>
-                </a>
-                <a class="group cursor-pointer" href="blog.html">
-                    <div class="aspect-square bg-slate-100 dark:bg-slate-900 mb-6 overflow-hidden rounded-sm relative">
-                        <img alt="Cyber security"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH2zwQcPn_l4wJzB1Fv0kutn3YPgEAPwfxpq7IPSbtsZMY2TEyTyfuilAguMOwxBaoqY3bm_PlEJt5RVuDjI4uDkH9-tXi9bmYQsUxvGzCNVW-PWHG_iPdoQ_B1wOD4joHMtR2FICqG2dJbWOQsF_rUnBYO8dVsA7GqjGdIBS7k4f6edySryT0T_6nlTRHGoxAw0d48XqA-j8gMAcHrjQM4wR9bNW3S6ZMBZXbBRKy4InTrjK3J-u7UzFo2Wgya9y5leDVuQoH5A" />
+                </div>
+
+                <!-- Section 03: Mutual -->
+                <div class="border-b lg:border-b-0 lg:border-r border-primary dark:border-white hover:bg-[#c5a368] hover:text-white transition-all duration-500 cursor-pointer group"
+                    onclick="location.href='blog.html?category=mutual'">
+                    <div class="p-8 h-full flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase tracking-[0.4em] mb-10 block text-slate-400 group-hover:text-white/40">Section
+                                03</span>
+                            <h3
+                                class="text-3xl font-black tracking-tighter italic mb-3 leading-tight group-hover:translate-x-3 transition-transform">
+                                <span class="text-[#c5a368] group-hover:text-white transition-colors">맞폭</span><br>학교폭력
+                                해설집
+                            </h3>
+                            <p class="text-[10px] font-bold text-slate-400 group-hover:text-white/60">쌍방 폭력 사건의 쟁점 분석 및
+                                대응 비책</p>
+                        </div>
+                        <div class="mt-6 mb-auto transition-all duration-500">
+                            <div class="inline-block border border-primary group-hover:border-white px-4 py-2">
+                                <span
+                                    class="text-[10px] font-black tracking-widest uppercase text-primary group-hover:text-white">눌러서
+                                    확인하기</span>
+                            </div>
+                        </div>
                         <div
-                            class="absolute top-4 left-4 bg-white/90 dark:bg-black/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
-                            Cyber Bullying</div>
+                            class="flex justify-between items-center text-[10px] font-black uppercase opacity-40 group-hover:opacity-100 pt-6">
+                            <span class="tracking-widest font-[Outfit]">Cross Allegation</span>
+                            <span class="material-symbols-outlined text-3xl">balance</span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 group-hover:underline">사이버 폭력 증거 수집의 정석</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">디지털 증거의 효력을 인정받기 위해 필요한 스크린샷 캡처
-                        방식과 포렌식 절차 안내입니다.</p>
-                </a>
+                </div>
+
+                <!-- Section 04: Appeal -->
+                <div class="hover:bg-[#475569] hover:text-white transition-all duration-500 cursor-pointer group"
+                    onclick="location.href='blog.html?category=appeal'">
+                    <div class="p-8 h-full flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <span
+                                class="text-[10px] font-black uppercase tracking-[0.4em] mb-10 block text-slate-400 group-hover:text-white/40">Section
+                                04</span>
+                            <h3
+                                class="text-3xl font-black tracking-tighter italic mb-3 leading-tight group-hover:translate-x-3 transition-transform">
+                                <span class="text-[#475569] group-hover:text-white transition-colors">불복절차</span><br>해설집
+                            </h3>
+                            <p class="text-[10px] font-bold text-slate-400 group-hover:text-white/60">행정심판 및 소송을 통한 결과
+                                불복 가이드</p>
+                        </div>
+                        <div class="mt-6 mb-auto transition-all duration-500">
+                            <div class="inline-block border border-primary group-hover:border-white px-4 py-2">
+                                <span
+                                    class="text-[10px] font-black tracking-widest uppercase text-primary group-hover:text-white">눌러서
+                                    확인하기</span>
+                            </div>
+                        </div>
+                        <div
+                            class="flex justify-between items-center text-[10px] font-black uppercase opacity-40 group-hover:opacity-100 pt-6">
+                            <span class="tracking-widest font-[Outfit]">Appeal Protocol</span>
+                            <span class="material-symbols-outlined text-3xl">history_edu</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="bg-slate-50 dark:bg-slate-900/50 py-24" id="analysis">
@@ -366,25 +481,10 @@
                 try {
                     const posts = await CMS.getPosts();
 
-                    // 1. Guidebook (Blog) 섹션 - 최신 3개
-                    const blogPosts = posts.filter(p => p.type === 'blog').slice(0, 3);
-                    const guidebookContainer = document.querySelector('#guidebook .grid');
-                    if (guidebookContainer && blogPosts.length > 0) {
-                        guidebookContainer.innerHTML = blogPosts.map(post => `
-                            <a class="group cursor-pointer" href="view.html?id=${post.id}">
-                                <div class="aspect-square bg-slate-100 dark:bg-slate-900 mb-6 overflow-hidden rounded-sm relative shadow-sm">
-                                    <img alt="${post.title}"
-                                        class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
-                                        src="${post.image || ''}" />
-                                    <div
-                                        class="absolute top-4 left-4 bg-white/90 dark:bg-black/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
-                                        ${post.category || '해설집'}</div>
-                                </div>
-                                <h3 class="text-xl font-bold mb-3 group-hover:underline">${post.title}</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">${post.summary}</p>
-                            </a>
-                        `).join('');
-                    }
+                    // 1. Guidebook (Blog) 섹션 - 최신 4개 (카테고리별 연결은 수동 구조이므로 스크립트는 필요시 각 섹션 내부 리스트로 확장 가능)
+                    // 현재는 보더 에디토리얼의 대형 인덱스 형식을 유지하기 위해 정적 구조를 선호할 수 있으나, 
+                    // 원하신다면 각 칸 안에 최신글 제목 1-2개를 추가하는 로직을 넣을 수 있습니다.
+                    // 우선은 디자인을 위해 각 칸 자체의 링크와 요약 텍스트로 구성했습니다.
 
                     // 2. Analysis (News) 섹션
                     const newsPosts = posts.filter(p => p.type === 'news');
@@ -493,6 +593,34 @@
                     }
                 });
             }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const line1 = document.getElementById('type-line-1');
+            const line2 = document.getElementById('type-line-2');
+
+            // Line 1 sequence
+            setTimeout(() => {
+                line1.classList.add('active', 'animate-typing');
+
+                // When line 1 finishes
+                setTimeout(() => {
+                    line1.classList.remove('active', 'animate-typing');
+                    line1.classList.add('finished');
+
+                    // Start line 2
+                    setTimeout(() => {
+                        line2.classList.add('active', 'animate-typing-short');
+
+                        // When line 2 finishes
+                        setTimeout(() => {
+                            line2.classList.remove('active', 'animate-typing-short');
+                            line2.classList.add('finished');
+                        }, 1000); // duration of line 2 typing
+                    }, 300); // small pause between lines
+                }, 2000); // duration of line 1 typing
+            }, 500); // initial delay
         });
     </script>
 </body>
