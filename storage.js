@@ -161,48 +161,20 @@ const CMS = {
         return false;
     },
 
-    // 구글 로그인 처리
+    // 구글 로그인 버튼 클릭 시 이메일 프롬프트 인증으로 처리
     login: async () => {
-        return new Promise(async (resolve) => {
-            function executeManualEmailLogin() {
-                const email = prompt('안전한 보안 환경이 확인되지 않거나 구글 계정 연동 응답이 지연되고 있습니다.\n관리자 이메일을 직접 입력하여 수동으로 인증해주세요:');
-                if (email === 'lawfirmpivot@gmail.com') {
-                    localStorage.setItem(ADMIN_KEY, 'true');
-                    alert('정상적으로 관리자 권한이 승인되었습니다.');
-                    window.location.reload();
-                } else if (email !== null && email.trim() !== '') {
-                    alert('인증에 실패했습니다. 권한이 등록되지 않은 이메일입니다.');
-                }
-                resolve();
-            }
-
-            if (!_supabaseClient || window.location.protocol === 'file:') {
-                executeManualEmailLogin();
-                return;
+        return new Promise((resolve) => {
+            const email = prompt('관리자 권한 승인을 위해 관리자용 이메일을 입력해주세요:');
+            
+            if (email === 'lawfirmpivot@gmail.com') {
+                localStorage.setItem(ADMIN_KEY, 'true');
+                alert('정상적으로 관리자 권한이 승인되었습니다.');
+                window.location.reload();
+            } else if (email !== null && email.trim() !== '') {
+                alert('인증에 실패했습니다. 권한이 등록되지 않은 관리자 이메일입니다.');
             }
             
-            try {
-                console.log('구글 로그인 시도 중...');
-                const { error } = await _supabaseClient.auth.signInWithOAuth({
-                    provider: 'google',
-                    options: {
-                        redirectTo: window.location.href
-                    }
-                });
-                
-                if (error) {
-                    throw error;
-                }
-                
-                // 리디렉션이 즉시 일어나지 않고 지연되는 경우(Supabase 설정 누락 등) 대비 1.5초 후 프롬프트 실행
-                setTimeout(() => {
-                    executeManualEmailLogin();
-                }, 1500);
-
-            } catch (error) {
-                console.error('구글 Auth 예외 발생:', error);
-                executeManualEmailLogin();
-            }
+            resolve();
         });
     },
 
