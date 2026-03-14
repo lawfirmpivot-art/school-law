@@ -134,46 +134,71 @@ const CMS = {
         }
     },
 
+    // 관리자 확인 (Google Login + 로컬 관리자 키 체크)
     isAdmin: async () => {
+        // 1. 로컬 스토리지 우선 확인
+        if (localStorage.getItem(ADMIN_KEY) === 'true') return true;
+
         if (!_supabaseClient) return false;
-        try {
-            const { data: { session }, error } = await _supabaseClient.auth.getSession();
-            if (session && session.user && session.user.email === 'lawfirmpivot@gmail.com') {
-                return true;
-            }
-            return false;
-        } catch (e) {
-            console.error('Session check failed:', e);
-            return false;
+        
+        // 2. 현재 Supabase 세션 확인
+        const { data: { session } } = await _supabaseClient.auth.getSession();
+        
+        // 3. 로그인된 사용자가 있고, 지정된 관리자 이메일인지 확인
+        if (session && session.user && session.user.email === 'lawfirmpivot@gmail.com') {
+            return true;
         }
+        
+        return false;
     },
 
+    // 비밀번호 기반 로그인 (비상용)
+    loginWithPassword: async (password) => {
+        if (password === 'lawfirmpivot@gmail.com') {
+            localStorage.setItem(ADMIN_KEY, 'true');
+            return true;
+        }
+        return false;
+    },
+
+    // 구글 로그인 처리
     login: async () => {
-        if (!_supabaseClient) return false;
+        if (!_supabaseClient) {
+            console.error('Supabase 클라이언트가 초기화되지 않았습니다.');
+            alert('인증 시스템을 불러오지 못했습니다. 인터넷 연결이나 브라우저 설정을 확인해주세요.');
+            return;
+        }
+        
         try {
+            console.log('구글 로그인 시작...');
             const { data, error } = await _supabaseClient.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    redirectTo: window.location.origin + '/admin.html'
+                    redirectTo: window.location.origin + window.location.pathname
                 }
             });
+            
             if (error) throw error;
-            return true;
-        } catch (e) {
-            console.error('Login failed:', e);
-            return false;
+        } catch (error) {
+            console.error('로그인 실패:', error);
+            alert('로그인 중 오류가 발생했습니다: ' + error.message);
+            throw error;
         }
     },
 
+    // 세션 정보 가져오기
+    getSession: async () => {
+        if (!_supabaseClient) return null;
+        const { data: { session } } = await _supabaseClient.auth.getSession();
+        return session;
+    },
+
+    // 로그아웃 처리
     logout: async () => {
+        localStorage.removeItem(ADMIN_KEY);
         if (!_supabaseClient) return;
-        try {
-            const { error } = await _supabaseClient.auth.signOut();
-            if (error) throw error;
-            window.location.reload();
-        } catch (e) {
-            console.error('Logout failed:', e);
-        }
+        await _supabaseClient.auth.signOut();
+        window.location.reload();
     }
 };
 

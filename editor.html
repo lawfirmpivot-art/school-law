@@ -41,7 +41,7 @@
         .glass-nav { @apply fixed top-0 w-full z-50 backdrop-blur-xl border-b bg-white/70 dark:bg-black/70 border-slate-200 dark:border-slate-800 transition-all duration-300; }
         
         /* Quill Customization */
-        .ql-toolbar.ql-snow { @apply sticky top-[65px] z-40 border-x-0 border-t-0 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-6 py-3 transition-colors; }
+        .ql-toolbar.ql-snow { @apply sticky top-[65px] z-40 border-x border-t-0 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-6 py-3 transition-colors; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
         .ql-container.ql-snow { @apply border-none bg-white dark:bg-slate-900 transition-colors; }
         .ql-editor { @apply text-lg leading-relaxed min-h-[500px] px-12 py-12; font-family: 'Noto Sans KR', sans-serif; }
         .dark .ql-editor { color: #f1f5f9; }
@@ -99,7 +99,10 @@
                                     타입</label>
                                 <select id="post-type"
                                     class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-sm text-sm p-3 focus:border-primary transition-colors">
-                                    <option value="blog">학교폭력 해설집</option>
+                                    <option value="victim">피해학생 학교폭력 해설집</option>
+                                    <option value="accused">가해학생 학교폭력 해설집</option>
+                                    <option value="mutual">맞폭 학교폭력 해설집</option>
+                                    <option value="appeal">불복절차 해설집</option>
                                     <option value="news">관련 뉴스 분석</option>
                                 </select>
                             </div>
@@ -122,7 +125,7 @@
                             <div class="flex gap-2">
                                 <input type="text" id="tag-input"
                                     class="flex-grow bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-sm text-sm p-3"
-                                    placeholder="태그 입력 후 Enter">
+                                    placeholder="태그 입력 (쉼표로 구분 가능)">
                                 <button type="button" id="add-tag-btn"
                                     class="bg-slate-200 dark:bg-slate-800 font-bold px-6 rounded-sm hover:bg-slate-300 transition-colors">추가</button>
                             </div>
@@ -172,7 +175,7 @@
 
             <!-- Editor Core -->
             <article
-                class="bg-white dark:bg-slate-900 rounded-sm shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+                class="bg-white dark:bg-slate-900 rounded-sm shadow-2xl border border-slate-200 dark:border-slate-800">
                 <input type="text" id="post-title" required
                     class="w-full text-4xl font-black p-8 border-b dark:bg-slate-900 border-slate-100 dark:border-slate-800 focus:outline-none placeholder:text-slate-300"
                     placeholder="제목을 입력하세요...">
@@ -197,10 +200,10 @@
             const typeParam = urlParams.get('type');
             let currentTags = [];
 
-            // 로컬 서버에서 파라미터 유실되는 경우 대비
+            // 로컬 서버에서 파라미터 유실되는 경우 대비 (수정: 새 글 작성 시 간섭하지 않도록 제거)
             if (!pid) {
-                pid = localStorage.getItem('last_post_id');
-                if (pid) console.log('PID recovered from localStorage:', pid);
+                // pid = localStorage.getItem('last_post_id');
+                // if (pid) console.log('PID recovered from localStorage:', pid);
             }
 
             // --- Quill Setup ---
@@ -383,9 +386,15 @@
             }
 
             function addTag() {
-                const val = tagInput.value.trim().replace(/^#/, '');
-                if (val && !currentTags.includes(val) && currentTags.length < 10) {
-                    currentTags.push(val);
+                const raw = tagInput.value;
+                // 콤마(,)로 분리하여 여러 태그 한꺼번에 등록
+                const parts = raw.split(',').map(s => s.trim().replace(/^#/, '')).filter(Boolean);
+                parts.forEach(val => {
+                    if (val && !currentTags.includes(val) && currentTags.length < 10) {
+                        currentTags.push(val);
+                    }
+                });
+                if (parts.length > 0) {
                     renderTags();
                     tagInput.value = '';
                 }
@@ -427,7 +436,7 @@
                         const post = await CMS.getPost(pid);
                         if (post) {
                             console.log('Post data loaded:', post.title);
-                            document.getElementById('post-type').value = post.type || 'blog';
+                            document.getElementById('post-type').value = post.type || 'victim';
                             document.getElementById('post-category').value = post.category || '';
                             document.getElementById('post-title').value = post.title || '';
                             document.getElementById('post-summary').value = post.summary || '';

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>모바일 리스트 레이아웃 제안</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a1a",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0a0a0a",
+                        "accent": "#2563eb",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "Noto Sans KR", "sans-serif"],
+                        body: ["Noto Sans KR", "sans-serif"],
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        /* 모바일 디바이스 프레임 시뮬레이션 */
+        .mobile-frame {
+            width: 375px; 
+            height: 667px; 
+            border: 12px solid #1e293b; 
+            border-radius: 2.5rem; 
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+        .dark .mobile-frame { background: #0f172a; border-color: #334155; }
+        .mobile-frame::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen py-10 px-4">
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-16">
+            <h1 class="text-3xl md:text-5xl font-black tracking-tight mb-4">모바일 리스트 디자인 제안 (5종)</h1>
+            <p class="text-slate-500 text-lg">기존의 큰 섬네일로 인해 가시성이 떨어지던 문제를 해결하기 위한 전문가 수준의 5가지 모바일 최적화 레이아웃입니다.</p>
+        </header>
+
+        <div class="flex flex-wrap justify-center gap-10">
+
+            <!-- 제안 1: 좌측 소형 썸네일 (High Density) -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-bold mb-4">1. 좌측 소형 썸네일 (스캔 용이)</h3>
+                <p class="text-sm text-slate-500 mb-6 text-center max-w-[300px]">뉴스/유튜브에서 가장 많이 쓰는 방식으로 좁은 화면에 많은 정보를 깔끔하게 보여줍니다.</p>
+                <div class="mobile-frame">
+                    <div class="p-4 border-b border-slate-100 dark:border-slate-800">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-24 h-24 shrink-0 bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=200&h=200" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="text-[10px] font-bold text-accent bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">피해학생 STEP 1</span>
+                                    <span class="text-[10px] text-slate-400">2026.3.8</span>
+                                </div>
+                                <h4 class="text-[15px] font-bold leading-snug mb-1.5 line-clamp-2">이게 학교폭력인가요? 법이 정한 학교폭력의 범위</h4>
+                                <p class="text-[12px] text-slate-500 line-clamp-2">학교폭력예방법 제2조에 따라 신체·정신·재산상 피해를 주는 모든 행위를 포함합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제안 2: 우측 썸네일 (Apple News Style) -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-bold mb-4">2. 우측 썸네일 (제목 강조형)</h3>
+                <p class="text-sm text-slate-500 mb-6 text-center max-w-[300px]">시선이 머무는 좌측에 텍스트를, 우측에 이미지를 두어 텍스트 집중도를 높이는 세련된 방식입니다.</p>
+                <div class="mobile-frame">
+                    <div class="p-5 border-b border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase">#학교폭력기준</span>
+                            <span class="text-[10px] font-bold text-slate-500 uppercase">#초기대응</span>
+                        </div>
+                        <div class="flex gap-5 items-center">
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-[17px] font-black leading-snug mb-2 line-clamp-2 tracking-tight">이게 학교폭력인가요? 법이 정한 학교폭력의 범위</h4>
+                                <span class="text-[11px] text-slate-400">피해학생 보호 가이드 • 5분 소요</span>
+                            </div>
+                            <div class="w-20 h-20 shrink-0 bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm">
+                                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=200&h=200" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제안 3: 이미지 생략 (Text-Only Professional) -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-bold mb-4">3. 이미지 생략 (텍스트 전문성 강화)</h3>
+                <p class="text-sm text-slate-500 mb-6 text-center max-w-[300px]">모바일 환경에서 이미지를 아예 제거하고, 타이포그래피만으로 전문 로펌의 느낌을 줍니다.</p>
+                <div class="mobile-frame">
+                    <div class="p-6 border-b border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-2 h-2 rounded-full bg-accent"></div>
+                            <span class="text-[11px] font-bold text-accent tracking-widest uppercase">피해학생 STEP 1</span>
+                            <span class="text-[11px] text-slate-400 ml-auto">2026.3.8</span>
+                        </div>
+                        <h4 class="text-[19px] font-black leading-tight tracking-tight mb-3">이게 학교폭력인가요?<br>법이 정한 학교폭력의 범위</h4>
+                        <p class="text-[13px] text-slate-500 line-clamp-3 leading-relaxed mb-4">학교폭력은 「학교폭력예방법」 제2조에 따라 신체·정신·재산상 피해를 주는 모든 유·무형의 행위를 포함하며 법원 판례는 이를 넓게 인정합니다.</p>
+                        <div class="flex items-center text-[11px] font-bold text-slate-400">
+                            <span class="material-symbols-outlined text-[14px] mr-1">menu_book</span> 전문 읽기
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제안 4: 카드 오버레이 (잡지 스타일) -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-bold mb-4">4. 카드 오버레이 (매거진 룩)</h3>
+                <p class="text-sm text-slate-500 mb-6 text-center max-w-[300px]">16:9 썸네일 위에 그라데이션과 함께 텍스트를 배치하여 세련되고 임팩트 있는 잡지 형태입니다.</p>
+                <div class="mobile-frame bg-slate-50 dark:bg-slate-900 p-4">
+                    <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600&h=450" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-5 text-left">
+                            <span class="inline-block bg-accent text-white text-[10px] font-bold px-2 py-0.5 rounded mb-2">피해학생 가이드</span>
+                            <h4 class="text-[18px] font-black text-white leading-tight mb-1">이게 학교폭력인가요? 법이 정한 학교폭력의 범위</h4>
+                            <p class="text-[12px] text-zinc-300 line-clamp-1">절체절명의 시간, 학폭위 위원의 시선</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 제안 5: 미니 카드 레이아웃 (경계선 디자인) -->
+            <div class="flex flex-col items-center">
+                <h3 class="text-xl font-bold mb-4">5. 미니멀 컨테이너 (앱 UI 스타일)</h3>
+                <p class="text-sm text-slate-500 mb-6 text-center max-w-[300px]">별도의 박스 형태로 항목을 감싸고 섬네일을 낮게 배치해 앱피드 느낌을 전달합니다.</p>
+                <div class="mobile-frame bg-slate-100 p-4">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-4">
+                        <div class="h-32 relative overflow-hidden">
+                             <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=600&h=300" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-[10px] font-bold text-slate-400">#학교폭력기준</span>
+                            </div>
+                            <h4 class="text-[16px] font-black leading-snug mb-2">이게 학교폭력인가요? 법이 정한 학교폭력의 범위</h4>
+                            <p class="text-[13px] text-slate-500 line-clamp-2 leading-relaxed">신체·정신·재산상 피해를 주는 모든 행위에 대한 대응</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

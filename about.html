@@ -46,52 +46,153 @@
         }
         .mono-tag { font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace; }
         html { scroll-behavior: smooth; }
+
+        /* About 페이지 타이포 최적화 */
+        .about-prose p { font-size: 1.125rem; line-height: 1.9; word-break: keep-all; }
+        .about-prose h2 { font-size: 1.75rem; font-weight: 900; letter-spacing: -0.03em; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .about-prose li { font-size: 1.125rem; line-height: 1.8; }
+        @media (min-width: 768px) {
+            .about-prose p { font-size: 1.25rem; line-height: 2; }
+            .about-prose h2 { font-size: 2rem; }
+            .about-prose li { font-size: 1.25rem; }
+        }
 </style>
 </head>
 
 <body
     class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
     <nav
-        class="fixed top-0 w-full z-50 px-6 py-5 flex justify-between items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-        <div class="flex items-center">
-            <a class="flex items-center gap-1 group" href="index.html">
-                <span class="text-xl font-black tracking-tighter text-primary dark:text-white">학교폭력</span>
-                <div class="bg-primary dark:bg-white text-white dark:text-primary px-1.5 py-0.5 ml-0.5">
-                    <span class="text-base font-black tracking-tighter leading-none">해설집</span>
+        class="fixed top-0 w-full z-50 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-slate-200 dark:border-zinc-800 transition-all duration-300">
+        <!-- Tier 1: Logo & Utility -->
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-5 flex justify-between items-center">
+            <div class="flex items-center">
+                <a class="flex items-center gap-1 group" href="index.html">
+                    <span class="text-2xl font-black tracking-tighter text-slate-900 dark:text-white">학교폭력</span>
+                    <div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-2 py-0.5 ml-1">
+                        <span class="text-lg font-black tracking-tighter leading-none">해설집</span>
+                    </div>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center gap-10">
+                <a class="text-[15px] font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all tracking-tight"
+                    href="about.html">작성자 소개</a>
+                <a class="text-[15px] font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all tracking-tight"
+                    href="news.html">관련 뉴스 분석</a>
+                <a class="bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-full text-[14px] font-black tracking-tight hover:scale-105 transition-all shadow-md"
+                    href="index.html#consult">상담 신청</a>
+                <button class="p-2 ml-4 rounded-full hover:bg-slate-100 dark:hover:bg-zinc-800"
+                    onclick="document.documentElement.classList.toggle('dark')">
+                    <span class="material-symbols-outlined text-[24px]">dark_mode</span>
+                </button>
+            </div>
+            <div class="flex md:hidden items-center gap-2">
+                <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-zinc-800"
+                    onclick="document.documentElement.classList.toggle('dark')">
+                    <span class="material-symbols-outlined text-[22px]">dark_mode</span>
+                </button>
+                <button id="mobile-menu-btn"
+                    class="p-2 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-[28px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tier 2: Colorful Integrated Navigation (Desktop) -->
+        <div class="hidden md:block border-t border-slate-100 dark:border-zinc-800/50">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 py-3 flex justify-center">
+                <div class="flex gap-4 items-center">
+                    <a href="victim_protection.html"
+                        class="group px-6 py-2.5 rounded-lg text-[17px] font-black hover:bg-blue-600 transition-all">
+                        <span class="text-blue-600 group-hover:text-white transition-colors">피해학생</span>
+                        <span
+                            class="text-slate-900 dark:text-white group-hover:text-white transition-colors ml-1.5">학교폭력
+                            해설집</span>
+                    </a>
+                    <a href="accused_guide.html"
+                        class="group px-6 py-2.5 rounded-lg text-[17px] font-black hover:bg-red-600 transition-all">
+                        <span class="text-red-600 group-hover:text-white transition-colors">가해학생</span>
+                        <span
+                            class="text-slate-900 dark:text-white group-hover:text-white transition-colors ml-1.5">학교폭력
+                            해설집</span>
+                    </a>
+                    <a href="mutual_guide.html"
+                        class="group px-6 py-2.5 rounded-lg text-[17px] font-black hover:bg-[#c5a368] transition-all">
+                        <span class="text-[#c5a368] group-hover:text-white transition-colors">맞폭</span>
+                        <span
+                            class="text-slate-900 dark:text-white group-hover:text-white transition-colors ml-1.5">학교폭력
+                            해설집</span>
+                    </a>
+                    <a href="appeal_guide.html"
+                        class="group px-6 py-2.5 rounded-lg text-[17px] font-black hover:bg-slate-800 transition-all">
+                        <span
+                            class="text-slate-700 dark:text-slate-400 group-hover:text-white transition-colors">불복절차</span>
+                        <span
+                            class="text-slate-900 dark:text-white group-hover:text-white transition-colors ml-1.5">해설집</span>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="hidden md:flex gap-10 text-[15px] font-bold tracking-tight">
-            <a class="opacity-60 transition-opacity whitespace-nowrap cursor-default" href="about.html">작성자(변호사) 소개</a>
-            <a class="hover:opacity-60 transition-opacity whitespace-nowrap" href="blog.html">학교폭력 해설집</a>
-            <a class="hover:opacity-60 transition-opacity whitespace-nowrap" href="news.html">관련 뉴스 분석</a>
-            <a class="hover:opacity-60 transition-opacity whitespace-nowrap" href="index.html#consult">상담 신청</a>
-        </div>
-        <div class="flex items-center gap-4">
-            <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
-                onclick="document.documentElement.classList.toggle('dark')">
-                <span class="material-symbols-outlined text-[20px]">dark_mode</span>
-            </button>
-            <div class="md:hidden">
-                <span class="material-symbols-outlined">menu</span>
             </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-24 px-6 md:px-12">
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-white dark:bg-background-dark translate-x-full transition-transform duration-500 md:hidden">
+        <div class="p-6 flex flex-col h-full">
+            <div class="flex justify-between items-center mb-10">
+                <a class="flex items-center gap-1" href="index.html">
+                    <span class="text-xl font-black tracking-tighter text-slate-900 dark:text-white">학교폭력</span>
+                    <div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-1.5 py-0.5 ml-0.5">
+                        <span class="text-base font-black tracking-tighter leading-none">해설집</span>
+                    </div>
+                </a>
+                <button id="close-menu-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="flex flex-col gap-5 overflow-y-auto pb-10">
+                <a href="about.html" class="text-xl font-bold tracking-tight">작성자 소개</a>
+                <a href="news.html" class="text-xl font-bold tracking-tight">관련 뉴스 분석</a>
+                <div class="h-px bg-slate-100 dark:bg-zinc-800 my-2"></div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">해설집 카테고리</p>
+                <a href="victim_protection.html" class="text-xl font-bold tracking-tight"><span
+                        class="text-blue-600">피해학생</span> 학교폭력 해설집</a>
+                <a href="accused_guide.html" class="text-xl font-bold tracking-tight"><span
+                        class="text-red-600">가해학생</span> 학교폭력 해설집</a>
+                <a href="mutual_guide.html" class="text-xl font-bold tracking-tight"><span
+                        class="text-[#c5a368]">맞폭</span> 학교폭력 해설집</a>
+                <a href="appeal_guide.html" class="text-xl font-bold tracking-tight"><span
+                        class="text-slate-500 dark:text-slate-400">불복절차</span> 해설집</a>
+                <a href="index.html#consult"
+                    class="mt-4 bg-black text-white p-4 rounded-xl text-center text-lg font-black uppercase tracking-widest shadow-lg"
+                    onclick="closeMenu()">상담 신청</a>
+            </div>
+
+            <div class="mt-auto pt-8 border-t border-slate-100 dark:border-slate-800">
+                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest italic">Legal Consultation</p>
+                <a href="tel:010-0000-0000" class="text-xl font-black tracking-tighter flex items-center gap-2">
+                    010-0000-0000
+                    <span class="material-symbols-outlined text-[18px]">call</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-36 md:pt-40 pb-24 px-5 md:px-12">
         <!-- Prose 클래스 연동하여 중앙 정렬 및 타이포 최적화 적용 -->
-        <article class="prose prose-slate dark:prose-invert prose-lg lg:prose-xl mx-auto">
-            <div class="not-prose mb-12">
-                <div class="relative aspect-[3/4] md:aspect-video overflow-hidden rounded-sm shadow-2xl">
+        <article class="about-prose prose prose-slate dark:prose-invert prose-lg lg:prose-xl mx-auto max-w-3xl">
+            <div class="not-prose mb-10 md:mb-16">
+                <div class="relative aspect-[4/5] md:aspect-[3/2] overflow-hidden rounded-2xl shadow-2xl">
                     <img alt="Expert Profile" class="object-cover w-full h-full" src="프로필사진(사무실).png" />
                 </div>
             </div>
-            <span class="mono-tag text-xs font-bold uppercase tracking-widest text-slate-500 block mb-2">ABOUT
+            <span
+                class="mono-tag text-xs md:text-sm font-bold uppercase tracking-widest text-slate-500 block mb-3">ABOUT
                 ATTORNEY</span>
-            <h1 class="font-black text-primary dark:text-white leading-tight mb-8 break-keep"
+            <h1 class="text-3xl md:text-5xl font-black text-primary dark:text-white leading-tight mb-8 md:mb-10 break-keep tracking-tight"
                 style="word-break: keep-all;">법은 아이들의 편이어야 합니다.</h1>
 
-            <p class="lead">
+            <p class="text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
                 안녕하세요. 법률사무소 피벗(Pivot) 대표 변호사 김경수입니다.
             </p>
 
@@ -102,60 +203,66 @@
             <p>이 블로그 『학교폭력 해설집』 은 그 간극을 메우기 위해 만들어졌습니다. 어렵고 복잡한 학교폭력 관련 법률과 절차를, 현장에서 직접 사건을 다뤄온 변호사의 시각으로 최대한 쉽고 정확하게
                 풀어드리고자 합니다.</p>
 
-            <hr class="border-slate-200 dark:border-slate-800 my-10" />
+            <hr class="border-slate-200 dark:border-slate-800 my-12 md:my-16" />
 
             <h2>블로그가 지향하는 두 가지 가치</h2>
             <p><strong>"피해학생의 보호" 그리고 "가해학생의 올바른 선도"</strong></p>
             <p>저는 피해학생이 정당한 보호와 회복의 기회를 얻고, 가해학생이 처벌로 끝나는 것이 아닌 진정한 성장의 계기를 마련할 수 있어야 한다고 믿습니다. 학교폭력 사건의 종착점은 누군가의 패배가
                 아니라, 모든 아이들이 다시 제 자리를 찾는 것이어야 하기 때문입니다.</p>
 
-            <hr class="border-slate-200 dark:border-slate-800 my-10" />
+            <hr class="border-slate-200 dark:border-slate-800 my-12 md:my-16" />
 
             <h2>경력 (Career)</h2>
-            <ul class="list-none pl-0">
-                <li class="flex items-start gap-3 mb-2"><span
-                        class="bg-primary text-white text-[10px] px-2 py-0.5 rounded font-bold mt-1">CURRENT</span>
-                    <span>서울시 소속 교육청 학교폭력대책심의위원회 위원</span>
+            <ul class="list-none pl-0 space-y-4 not-prose">
+                <li class="flex items-start gap-3">
+                    <span
+                        class="bg-primary text-white text-[11px] md:text-xs px-3 py-1 rounded-full font-bold mt-0.5 whitespace-nowrap">CURRENT</span>
+                    <span class="text-lg md:text-xl font-medium">서울시 소속 교육청 학교폭력대책심의위원회 위원</span>
                 </li>
-                <li class="flex items-start gap-3 mb-2"><span
-                        class="bg-primary text-white text-[10px] px-2 py-0.5 rounded font-bold mt-1">CURRENT</span>
-                    <span>대한변호사협회 인증 학교폭력전문 변호사</span>
+                <li class="flex items-start gap-3">
+                    <span
+                        class="bg-primary text-white text-[11px] md:text-xs px-3 py-1 rounded-full font-bold mt-0.5 whitespace-nowrap">CURRENT</span>
+                    <span class="text-lg md:text-xl font-medium">대한변호사협회 인증 학교폭력전문 변호사</span>
                 </li>
-                <li class="flex items-start gap-3 mb-2"><span
-                        class="bg-primary text-white text-[10px] px-2 py-0.5 rounded font-bold mt-1">CURRENT</span>
-                    <span>대한변호사협회 인증 형사 전문 변호사</span>
+                <li class="flex items-start gap-3">
+                    <span
+                        class="bg-primary text-white text-[11px] md:text-xs px-3 py-1 rounded-full font-bold mt-0.5 whitespace-nowrap">CURRENT</span>
+                    <span class="text-lg md:text-xl font-medium">대한변호사협회 인증 형사 전문 변호사</span>
                 </li>
-                <li class="flex items-start gap-3 mb-2"><span
-                        class="bg-primary text-white text-[10px] px-2 py-0.5 rounded font-bold mt-1">CURRENT</span>
-                    <span>법률사무소 피벗 대표 변호사</span>
+                <li class="flex items-start gap-3">
+                    <span
+                        class="bg-primary text-white text-[11px] md:text-xs px-3 py-1 rounded-full font-bold mt-0.5 whitespace-nowrap">CURRENT</span>
+                    <span class="text-lg md:text-xl font-medium">법률사무소 피벗 대표 변호사</span>
                 </li>
-                <li class="flex items-start gap-3 mb-2"><span
-                        class="bg-slate-400 text-white text-[10px] px-2 py-0.5 rounded font-bold mt-1">PAST</span>
-                    <span>LCK(League of Legends) 공인 에이전트</span>
+                <li class="flex items-start gap-3">
+                    <span
+                        class="bg-slate-400 text-white text-[11px] md:text-xs px-3 py-1 rounded-full font-bold mt-0.5 whitespace-nowrap">PAST</span>
+                    <span class="text-lg md:text-xl font-medium">LCK(League of Legends) 공인 에이전트</span>
                 </li>
-                <li class="flex items-start gap-3 mb-2"><span
-                        class="bg-slate-400 text-white text-[10px] px-2 py-0.5 rounded font-bold mt-1">PAST</span>
-                    <span>대형로펌 형사 및 학교폭력 변호사</span>
-                </li>
-            </ul>
-
-            <h2 class="text-2xl font-black mt-16 mb-6">학력 (Education)</h2>
-            <ul class="list-none pl-0 space-y-3">
-                <li class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-slate-400 text-sm">school</span>
-                    <span class="font-bold">한국외국어대학교 법학전문대학원 졸업</span>
-                </li>
-                <li class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-slate-400 text-sm">school</span>
-                    <span class="font-bold">한국외국어대학교 영어통번역학과 졸업</span>
-                </li>
-                <li class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-slate-400 text-sm">school</span>
-                    <span class="font-bold">명덕외국어고등학교 졸업</span>
+                <li class="flex items-start gap-3">
+                    <span
+                        class="bg-slate-400 text-white text-[11px] md:text-xs px-3 py-1 rounded-full font-bold mt-0.5 whitespace-nowrap">PAST</span>
+                    <span class="text-lg md:text-xl font-medium">대형로펌 형사 및 학교폭력 변호사</span>
                 </li>
             </ul>
 
-            <hr class="border-slate-200 dark:border-slate-800 my-10" />
+            <h2>학력 (Education)</h2>
+            <ul class="list-none pl-0 space-y-4 not-prose">
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-400 text-xl">school</span>
+                    <span class="text-lg md:text-xl font-bold">한국외국어대학교 법학전문대학원 졸업</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-400 text-xl">school</span>
+                    <span class="text-lg md:text-xl font-bold">한국외국어대학교 영어통번역학과 졸업</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-400 text-xl">school</span>
+                    <span class="text-lg md:text-xl font-bold">명덕외국어고등학교 졸업</span>
+                </li>
+            </ul>
+
+            <hr class="border-slate-200 dark:border-slate-800 my-12 md:my-16" />
 
             <h2>이런 분들께 권합니다</h2>
             <ul>
@@ -165,21 +272,22 @@
                 <li>학교폭력 관련 법률 정보가 필요한 누구나</li>
             </ul>
 
-            <div class="mt-12 text-center not-prose">
+            <div class="mt-16 text-center not-prose">
                 <a href="index.html#consult"
-                    class="inline-flex bg-primary dark:bg-slate-100 text-white dark:text-primary px-8 py-4 rounded-full items-center gap-4 hover:scale-105 transition-transform">
-                    <span class="font-bold uppercase tracking-tight">비공개 상담 신청</span>
-                    <span class="material-symbols-outlined">call</span>
+                    class="inline-flex bg-primary dark:bg-slate-100 text-white dark:text-primary px-10 py-5 rounded-full items-center gap-4 hover:scale-105 transition-transform shadow-xl text-lg font-black">
+                    <span class="uppercase tracking-tight">비공개 상담 신청</span>
+                    <span class="material-symbols-outlined text-2xl">call</span>
                 </a>
             </div>
         </article>
     </main>
 
-    <section class="px-6 md:px-12 py-24 max-w-3xl mx-auto border-t border-slate-100 dark:border-slate-800" id="consult">
-        <div class="text-center mb-16">
-            <span class="mono-tag text-xs opacity-50 block mb-2">03 / PRIVATE CONSULTATION</span>
-            <h2 class="text-4xl font-bold mb-4">비공개 법률 상담 신청</h2>
-            <p class="text-slate-500">모든 상담 내용은 철저히 비밀로 보장됩니다.</p>
+    <section class="px-5 md:px-12 py-24 md:py-32 max-w-3xl mx-auto border-t border-slate-100 dark:border-slate-800"
+        id="consult">
+        <div class="text-center mb-12 md:mb-16">
+            <span class="mono-tag text-xs md:text-sm opacity-50 block mb-3">03 / PRIVATE CONSULTATION</span>
+            <h2 class="text-3xl md:text-4xl font-black mb-4 tracking-tight">비공개 법률 상담 신청</h2>
+            <p class="text-base md:text-lg text-slate-500">모든 상담 내용은 철저히 비밀로 보장됩니다.</p>
         </div>
         <form id="consult-form" class="space-y-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -257,6 +365,83 @@
         </form>
     </section>
 
+    <!-- [Elite Duo] Floating Consultation Menu -->
+    <div class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-px bg-white/95 backdrop-blur-xl rounded-l-3xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-y border-l border-slate-200 overflow-hidden md:flex hidden">
+        <a href="tel:010-0000-0000" class="side-dock-item p-4 hover:bg-slate-50 cursor-pointer border-b border-slate-100 transition-all group flex flex-col items-center gap-2 w-24">
+            <div class="w-10 h-10 bg-[#4CAF50] rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
+                <span class="material-symbols-outlined text-white text-2xl">call</span>
+            </div>
+            <span class="text-[11px] font-black text-slate-500 group-hover:text-slate-900 transition-colors">전화상담</span>
+        </a>
+        <a href="#consult" class="side-dock-item p-4 hover:bg-slate-50 cursor-pointer border-b border-slate-100 transition-all group flex flex-col items-center gap-2 w-24">
+            <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
+                <span class="material-symbols-outlined text-white text-2xl">chat</span>
+            </div>
+            <span class="text-[11px] font-black text-slate-500 group-hover:text-slate-900 transition-colors">상담신청</span>
+        </a>
+        <a href="https://open.kakao.com/o/ssRvCIih" target="_blank" class="side-dock-item p-4 hover:bg-[#FEE500]/10 cursor-pointer border-b border-slate-100 transition-all group flex flex-col items-center gap-2 w-24">
+            <div class="w-10 h-10 bg-[#FEE500] rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="#3C1E1E">
+                    <path d="M12 3C7.029 3 3 6.129 3 10c0 2.41 1.56 4.545 3.96 5.823l-.993 3.652c-.105.385.344.694.673.477l4.298-2.834c.35.05.707.082 1.062.082 4.971 0 9-3.129 9-7s-4.029-7-9-7z"/>
+                </svg>
+            </div>
+            <span class="text-[11px] font-black text-slate-500 group-hover:text-[#3C1E1E] transition-colors">카톡상담</span>
+        </a>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-4 hover:bg-slate-50 cursor-pointer transition-colors group flex flex-col items-center gap-1 w-24">
+            <span class="material-symbols-outlined text-slate-400 group-hover:text-slate-900 transition-transform group-hover:-translate-y-1">arrow_upward</span>
+            <span class="text-[9px] font-black text-slate-400 group-hover:text-slate-900 uppercase">Top</span>
+        </button>
+    </div>
+
+    <!-- Reopen Button (Trigger) - Hidden by default -->
+    <button id="profile-trigger" 
+            onclick="toggleProfileCard(true)" 
+            class="fixed bottom-2 right-2 z-[100] w-10 h-10 sm:w-16 sm:h-16 rounded-full shadow-2xl border-[2px] sm:border-4 border-white overflow-hidden hidden hover:scale-110 transition-transform animate-float-in group">
+        <img src="랜딩페이지프로필사진.png" class="w-full h-full object-cover" alt="열기">
+        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="material-symbols-outlined text-white text-base sm:text-2xl">add</span>
+        </div>
+        <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border border-white animate-pulse"></span>
+    </button>
+
+    <!-- Premium Profile Card (Mobile: Bottom, PC: Right Bottom) -->
+    <div id="profile-card" class="fixed bottom-2 right-2 z-[100] w-[140px] sm:w-80 animate-float-in">
+        <div class="glass rounded-[1rem] p-2 sm:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.15)] border border-white/50 relative overflow-hidden text-slate-900">
+            <!-- Close Button -->
+            <button onclick="toggleProfileCard(false)" class="absolute top-1.5 right-1.5 text-slate-400 hover:text-slate-600">
+                <span class="material-symbols-outlined text-[12px] sm:text-sm">close</span>
+            </button>
+
+            <div class="flex items-center gap-1.5 sm:gap-4 mb-2 sm:mb-4 pb-2 sm:pb-4 border-b border-slate-100/50">
+                <div class="relative shrink-0">
+                    <img src="랜딩페이지프로필사진.png" class="w-6 h-6 sm:w-14 sm:h-14 rounded-md sm:rounded-2xl object-cover shadow-sm" alt="김경수 변호사">
+                    <span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-[1px] sm:border-[3px] border-white animate-pulse"></span>
+                </div>
+                <div class="leading-none flex flex-col gap-0.5 sm:gap-1">
+                    <h4 class="font-black text-[10px] sm:text-lg tracking-tighter whitespace-nowrap">김경수 대표변호사</h4>
+                    <p class="text-[6px] sm:text-[10px] font-bold text-emerald-600">상담 중</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-1 sm:gap-2">
+                <div class="grid grid-cols-2 gap-1 sm:gap-2">
+                    <a href="tel:010-0000-0000" class="bg-slate-50 text-slate-700 h-6 sm:h-12 rounded-sm sm:rounded-xl flex items-center justify-center gap-0.5 hover:bg-slate-100 transition-all group">
+                        <span class="material-symbols-outlined text-[10px] sm:text-lg">call</span>
+                        <span class="font-bold text-[7px] sm:text-xs">전화</span>
+                    </a>
+                    <a href="https://open.kakao.com/o/ssRvCIih" target="_blank" class="bg-[#FEE500] text-[#3C1E1E] h-6 sm:h-12 rounded-sm sm:rounded-xl flex items-center justify-center gap-0.5 hover:bg-[#FADB00] transition-all group shadow-sm">
+                        <span class="material-symbols-outlined text-[10px] sm:text-lg">chat</span>
+                        <span class="font-bold text-[7px] sm:text-xs">카톡</span>
+                    </a>
+                </div>
+                <a href="#consult" class="bg-primary text-white h-6 sm:h-12 rounded-sm sm:rounded-xl flex items-center justify-center gap-1 hover:bg-opacity-90 transition-all group shadow-sm">
+                    <span class="material-symbols-outlined text-[10px] sm:text-lg">edit_note</span>
+                    <span class="font-bold text-[7px] sm:text-xs">상담신청</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <footer
         class="border-t border-slate-200 dark:border-slate-800 py-12 px-6 md:px-12 bg-white dark:bg-background-dark mt-auto">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
@@ -279,6 +464,26 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 모바일 메뉴 제어 로직
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function openMenu() {
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+
+            window.closeMenu = closeMenu; // HTML inline onclick용
+
             // Web3Forms 상담 신청 처리
             const consultForm = document.getElementById('consult-form');
             if (consultForm) {
@@ -350,6 +555,19 @@
                 });
             }
         });
+    </script>
+    <script>
+        window.toggleProfileCard = function(show) {
+            const card = document.getElementById('profile-card');
+            const trigger = document.getElementById('profile-trigger');
+            if (show) {
+                card.style.display = 'block';
+                trigger.style.display = 'none';
+            } else {
+                card.style.display = 'none';
+                trigger.style.display = 'block';
+            }
+        };
     </script>
 </body>
 
