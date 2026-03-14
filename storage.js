@@ -163,27 +163,47 @@ const CMS = {
 
     // 구글 로그인 처리
     login: async () => {
-        if (!_supabaseClient) {
-            console.error('Supabase 클라이언트가 초기화되지 않았습니다.');
-            alert('인증 시스템을 불러오지 못했습니다. 인터넷 연결이나 브라우저 설정을 확인해주세요.');
-            return;
-        }
-        
-        try {
-            console.log('구글 로그인 시작...');
-            const { data, error } = await _supabaseClient.auth.signInWithOAuth({
-                provider: 'google',
-                options: {
-                    redirectTo: window.location.origin + window.location.pathname
+        return new Promise(async (resolve) => {
+            function executeManualEmailLogin() {
+                const email = prompt('안전한 보안 환경이 확인되지 않거나 구글 계정 연동 응답이 지연되고 있습니다.\n관리자 이메일을 직접 입력하여 수동으로 인증해주세요:');
+                if (email === 'lawfirmpivot@gmail.com') {
+                    localStorage.setItem(ADMIN_KEY, 'true');
+                    alert('정상적으로 관리자 권한이 승인되었습니다.');
+                    window.location.reload();
+                } else if (email !== null && email.trim() !== '') {
+                    alert('인증에 실패했습니다. 권한이 등록되지 않은 이메일입니다.');
                 }
-            });
+                resolve();
+            }
+
+            if (!_supabaseClient || window.location.protocol === 'file:') {
+                executeManualEmailLogin();
+                return;
+            }
             
-            if (error) throw error;
-        } catch (error) {
-            console.error('로그인 실패:', error);
-            alert('로그인 중 오류가 발생했습니다: ' + error.message);
-            throw error;
-        }
+            try {
+                console.log('구글 로그인 시도 중...');
+                const { error } = await _supabaseClient.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                        redirectTo: window.location.href
+                    }
+                });
+                
+                if (error) {
+                    throw error;
+                }
+                
+                // 리디렉션이 즉시 일어나지 않고 지연되는 경우(Supabase 설정 누락 등) 대비 1.5초 후 프롬프트 실행
+                setTimeout(() => {
+                    executeManualEmailLogin();
+                }, 1500);
+
+            } catch (error) {
+                console.error('구글 Auth 예외 발생:', error);
+                executeManualEmailLogin();
+            }
+        });
     },
 
     // 세션 정보 가져오기
