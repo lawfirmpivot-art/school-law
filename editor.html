@@ -77,6 +77,10 @@
                 onclick="document.documentElement.classList.toggle('dark')">
                 <span class="material-symbols-outlined text-[20px]">dark_mode</span>
             </button>
+            <button type="button" id="delete-btn"
+                class="hidden text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all">
+                원고 삭제
+            </button>
             <button type="submit" form="post-form" id="publish-btn"
                 class="bg-primary dark:bg-white text-white dark:text-primary px-8 py-2 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-lg">
                 원고 발행하기
@@ -199,6 +203,7 @@
             let pid = urlParams.get('id');
             const typeParam = urlParams.get('type');
             let currentTags = [];
+            const deleteBtn = document.getElementById('delete-btn');
 
             // 로컬 서버에서 파라미터 유실되는 경우 대비 (수정: 새 글 작성 시 간섭하지 않도록 제거)
             if (!pid) {
@@ -432,6 +437,7 @@
 
                         const pubBtn = document.getElementById('publish-btn');
                         if (pubBtn) pubBtn.innerText = '원고 수정 완료';
+                        if (deleteBtn) deleteBtn.classList.remove('hidden');
 
                         const post = await CMS.getPost(pid);
                         if (post) {
@@ -506,6 +512,33 @@
                     publishBtn.disabled = false;
                 }
             });
+
+            // --- Delete Post ---
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', async () => {
+                    if (!pid) return;
+                    
+                    if (confirm('정말로 이 원고를 삭제하시겠습니까? 삭제된 원고는 복구할 수 없습니다.')) {
+                        const originalBtnText = deleteBtn.innerText;
+                        try {
+                            deleteBtn.innerText = '삭제 중...';
+                            deleteBtn.disabled = true;
+                            
+                            const success = await CMS.deletePost(pid);
+                            if (success) {
+                                alert('원고가 삭제되었습니다.');
+                                window.location.href = 'index.html';
+                            }
+                        } catch (err) {
+                            console.error('Delete error:', err);
+                            alert('삭제 중 오류가 발생했습니다: ' + err.message);
+                        } finally {
+                            deleteBtn.innerText = originalBtnText;
+                            deleteBtn.disabled = false;
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
