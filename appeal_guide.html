@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=IBM+Plex+Sans+KR:wght@300;400;500;700&amp;family=Gowun+Batang:wght@400;700&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -88,6 +88,10 @@
             .pulse-dot { top: 1rem; right: 1rem; width: 6px; height: 6px; }
         }
         .active .pulse-dot { display: block; }
+        .font-noto { font-family: 'Noto Sans KR', sans-serif; }
+        .font-ibm { font-family: 'IBM Plex Sans KR', sans-serif; }
+        .font-batang { font-family: 'Gowun Batang', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
     </style>
 </head>
 
@@ -202,8 +206,8 @@
 
             <div class="mt-auto pt-8 border-t border-slate-100 dark:border-slate-800">
                 <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest italic">Legal Consultation</p>
-                <a href="tel:010-0000-0000" class="text-xl font-black tracking-tighter flex items-center gap-2">
-                    010-0000-0000
+                <a href="tel:010-9176-2782" class="text-xl font-black tracking-tighter flex items-center gap-2">
+                    010-9176-2782
                     <span class="material-symbols-outlined text-[18px]">call</span>
                 </a>
             </div>
@@ -348,38 +352,38 @@
                                 <div class="flex items-center gap-2">
                                     <div class="w-full">
                                         <h2 id="canvas-title"
-                                            class="text-2xl md:text-4xl font-black tracking-tighter mb-3 italic break-keep">
+                                            class="text-2xl md:text-4xl font-black tracking-tighter mb-4 font-ibm text-primary dark:text-white break-keep">
                                             1단계: 조치 결정서 수령 및 청구 기간 확인 (90일의 싸움)</h2>
-                                        <span
-                                            class="bg-slate-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-sm">Golden
-                                            Time Phase</span>
+                                        <span id="canvas-badge"
+                                            class="font-inter inline-block bg-[#475569] text-white text-[0.65rem] font-black px-2 py-1 rounded-[2px] uppercase tracking-[0.1em]">
+                                            GOLDEN TIME PHASE</span>
                                     </div>
                                 </div>
-                                <div class="space-y-8 md:y-10">
+                                <div class="space-y-8 md:space-y-10">
                                     <!-- [단계 설명] 섹션 -->
                                     <div>
                                         <h4
-                                            class="text-slate-600 font-black text-xs uppercase tracking-widest mb-4 italic">
+                                            class="text-[#475569] font-black text-[0.75rem] uppercase tracking-widest mb-2 italic font-noto">
                                             // 절차 상세 설명</h4>
                                         <div id="canvas-explanation"
-                                            class="text-slate-500 text-base md:text-xl leading-relaxed font-medium break-keep">
+                                            class="text-slate-500 dark:text-slate-400 text-base md:text-xl leading-relaxed font-noto break-keep">
                                             교육장으로부터 조치 결정 통보서를 수령한 날이 행정심판의 공식적인 시작점입니다. 법적으로 처분이 있음을 안 날로부터 <strong
-                                                class="text-slate-900">90일</strong>, 있었던 날로부터 <strong
-                                                class="text-slate-900">180일</strong> 이내에 청구해야 하며, 이 기간을 단 하루라도 넘기면 내용의
+                                                class="text-slate-900 dark:text-white">90일</strong>, 있었던 날로부터 <strong
+                                                class="text-slate-900 dark:text-white">180일</strong> 이내에 청구해야 하며, 이 기간을 단 하루라도 넘기면 내용의
                                             억울함과 관계없이 청구 자체가 거부되는 '각하' 판결을 받게 됩니다.
                                         </div>
                                     </div>
 
                                     <!-- 구분선 -->
-                                    <div class="border-t-2 border-slate-100 w-16"></div>
+                                    <div class="h-[2px] w-[4rem] bg-[#f8fafc] dark:bg-slate-800"></div>
 
                                     <!-- [변호사 가이드] 섹션 -->
                                     <div>
                                         <h4
-                                            class="text-slate-600 font-black text-xs uppercase tracking-widest mb-4 italic">
+                                            class="text-[#475569] font-black text-[0.75rem] uppercase tracking-widest mb-2 italic font-noto">
                                             // 김경수 변호사의 가이드</h4>
                                         <div id="canvas-guide"
-                                            class="text-slate-900 text-base md:text-xl font-bold leading-relaxed break-keep italic">
+                                            class="text-slate-700 dark:text-slate-300 text-lg md:text-xl leading-relaxed italic break-keep font-batang">
                                             "재심이 폐지되어 행정심판이 사실상 유일한 구제책인 상황에서 90일은 결코 길지 않습니다. 저는 통보 즉시 자녀의 입시 일정과 연계하여
                                             최적의 청구 시점을 설계합니다. 기간 도과로 인한 불이익을 원천 차단하고, 초기 상담을 통해 자녀의 방어 기회를 확실히 확보하는 것이 제
                                             조력의 첫걸음입니다."
@@ -438,7 +442,7 @@
                     <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500">연락처</label>
                     <input id="c-phone" required
                         class="w-full bg-transparent border-0 border-b-2 border-slate-200 dark:border-slate-800 focus:ring-0 focus:border-appeal-accent px-0 transition-colors"
-                        placeholder="010-0000-0000" type="tel" />
+                        placeholder="010-9176-2782" type="tel" />
                 </div>
             </div>
             <div class="space-y-2">
@@ -463,7 +467,7 @@
 
     <!-- [Elite Duo] Floating Consultation Menu -->
     <div class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-px bg-white/95 backdrop-blur-xl rounded-l-3xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-y border-l border-slate-200 overflow-hidden md:flex hidden">
-        <a href="tel:010-0000-0000" class="side-dock-item p-4 hover:bg-slate-50 cursor-pointer border-b border-slate-100 transition-all group flex flex-col items-center gap-2 w-24">
+        <a href="tel:010-9176-2782" class="side-dock-item p-4 hover:bg-slate-50 cursor-pointer border-b border-slate-100 transition-all group flex flex-col items-center gap-2 w-24">
             <div class="w-10 h-10 bg-[#4CAF50] rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
                 <span class="material-symbols-outlined text-white text-2xl">call</span>
             </div>
@@ -492,47 +496,46 @@
     <!-- Reopen Button (Trigger) - Hidden by default -->
     <button id="profile-trigger" 
             onclick="toggleProfileCard(true)" 
-            class="fixed bottom-2 right-2 z-[100] w-10 h-10 sm:w-16 sm:h-16 rounded-full shadow-2xl border-[2px] sm:border-4 border-white overflow-hidden hidden hover:scale-110 transition-transform animate-float-in group">
+            class="fixed bottom-4 right-4 z-[100] w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl border-[2px] sm:border-4 border-white overflow-hidden hidden hover:scale-110 transition-transform animate-float-in group">
         <img src="랜딩페이지프로필사진.png" class="w-full h-full object-cover" alt="열기">
         <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
             <span class="material-symbols-outlined text-white text-base sm:text-2xl">add</span>
         </div>
-        <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border border-white animate-pulse"></span>
+        <span class="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border border-white animate-pulse"></span>
     </button>
 
-    <!-- Premium Profile Card (Mobile: Bottom, PC: Right Bottom) -->
-    <div id="profile-card" class="fixed bottom-2 right-2 z-[100] w-[140px] sm:w-80 animate-float-in">
-        <div class="glass rounded-[1rem] p-2 sm:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.15)] border border-white/50 relative overflow-hidden text-slate-900">
+    <div id="profile-card" class="fixed bottom-4 right-4 z-[100] w-[50%] sm:w-80 animate-float-in">
+        <div class="glass rounded-[1.5rem] p-3.5 sm:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.15)] border border-white/50 relative overflow-hidden text-slate-900">
             <!-- Close Button -->
-            <button onclick="toggleProfileCard(false)" class="absolute top-1.5 right-1.5 text-slate-400 hover:text-slate-600">
-                <span class="material-symbols-outlined text-[12px] sm:text-sm">close</span>
+            <button onclick="toggleProfileCard(false)" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600">
+                <span class="material-symbols-outlined text-[14px] sm:text-sm">close</span>
             </button>
 
-            <div class="flex items-center gap-1.5 sm:gap-4 mb-2 sm:mb-4 pb-2 sm:pb-4 border-b border-slate-100/50">
+            <div class="flex items-center gap-2.5 sm:gap-4 mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-slate-100/50">
                 <div class="relative shrink-0">
-                    <img src="랜딩페이지프로필사진.png" class="w-6 h-6 sm:w-14 sm:h-14 rounded-md sm:rounded-2xl object-cover shadow-sm" alt="김경수 변호사">
-                    <span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-[1px] sm:border-[3px] border-white animate-pulse"></span>
+                    <img src="랜딩페이지프로필사진.png" class="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl object-cover shadow-sm" alt="김경수 변호사">
+                    <span class="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-2 sm:border-[3px] border-white animate-pulse"></span>
                 </div>
-                <div class="leading-none flex flex-col gap-0.5 sm:gap-1">
-                    <h4 class="font-black text-[10px] sm:text-lg tracking-tighter whitespace-nowrap">김경수 대표변호사</h4>
-                    <p class="text-[6px] sm:text-[10px] font-bold text-emerald-600">상담 중</p>
+                <div class="leading-none flex flex-col gap-1 sm:gap-1">
+                    <h4 class="font-black text-[13px] sm:text-lg tracking-tighter whitespace-nowrap">김경수 대표변호사</h4>
+                    <p class="text-[10px] sm:text-[10px] font-bold text-emerald-600">상담 중</p>
                 </div>
             </div>
             
-            <div class="flex flex-col gap-1 sm:gap-2">
-                <div class="grid grid-cols-2 gap-1 sm:gap-2">
-                    <a href="tel:010-0000-0000" class="bg-slate-50 text-slate-700 h-6 sm:h-12 rounded-sm sm:rounded-xl flex items-center justify-center gap-0.5 hover:bg-slate-100 transition-all group">
-                        <span class="material-symbols-outlined text-[10px] sm:text-lg">call</span>
-                        <span class="font-bold text-[7px] sm:text-xs">전화</span>
+            <div class="flex flex-col gap-1.5 sm:gap-2">
+                <div class="grid grid-cols-2 gap-1.5 sm:gap-2">
+                    <a href="tel:010-9176-2782" class="bg-slate-50 text-slate-700 h-9 sm:h-12 rounded-xl sm:rounded-xl flex items-center justify-center gap-1 hover:bg-slate-100 transition-all group">
+                        <span class="material-symbols-outlined text-base sm:text-lg">call</span>
+                        <span class="font-bold text-[11px] sm:text-xs">전화</span>
                     </a>
-                    <a href="https://open.kakao.com/o/ssRvCIih" target="_blank" class="bg-[#FEE500] text-[#3C1E1E] h-6 sm:h-12 rounded-sm sm:rounded-xl flex items-center justify-center gap-0.5 hover:bg-[#FADB00] transition-all group shadow-sm">
-                        <span class="material-symbols-outlined text-[10px] sm:text-lg">chat</span>
-                        <span class="font-bold text-[7px] sm:text-xs">카톡</span>
+                    <a href="https://open.kakao.com/o/ssRvCIih" target="_blank" class="bg-[#FEE500] text-[#3C1E1E] h-9 sm:h-12 rounded-xl sm:rounded-xl flex items-center justify-center gap-1 hover:bg-[#FADB00] transition-all group shadow-sm">
+                        <span class="material-symbols-outlined text-base sm:text-lg">chat</span>
+                        <span class="font-bold text-[11px] sm:text-xs">카톡</span>
                     </a>
                 </div>
-                <a href="#consult" class="bg-appeal-accent text-white h-6 sm:h-12 rounded-sm sm:rounded-xl flex items-center justify-center gap-1 hover:bg-opacity-90 transition-all group shadow-sm">
-                    <span class="material-symbols-outlined text-[10px] sm:text-lg">edit_note</span>
-                    <span class="font-bold text-[7px] sm:text-xs">상담신청</span>
+                <a href="#consult" class="bg-appeal-accent text-white h-9 sm:h-12 rounded-xl sm:rounded-xl flex items-center justify-center gap-1 hover:bg-opacity-90 transition-all group shadow-sm">
+                    <span class="material-symbols-outlined text-base sm:text-lg">edit_note</span>
+                    <span class="font-bold text-[11px] sm:text-xs">상담신청</span>
                 </a>
             </div>
         </div>
@@ -560,29 +563,34 @@
     <script>
         const stepData = {
             1: {
-                title: "1단계: 조치 결정서 수령 및 청구 기간 확인 (90일의 싸움)",
-                exp: "교육장으로부터 조치 결정 통보서를 수령한 날이 행정심판의 공식적인 시작점입니다. 법적으로 처분이 있음을 안 날로부터 **90일**, 있었던 날로부터 **180일** 이내에 청구해야 하며, 이 기간을 단 하루라도 넘기면 내용의 억울함과 관계없이 청구 자체가 거부되는 '각하' 판결을 받게 됩니다.",
-                guide: "재심이 폐지되어 행정심판이 사실상 유일한 구제책인 상황에서 90일은 결코 길지 않습니다. 저는 통보 즉시 자녀의 입시 일정과 연계하여 최적의 청구 시점을 설계합니다. 기간 도과로 인한 불이익을 원천 차단하고, 초기 상담을 통해 자녀의 방어 기회를 확실히 확보하는 것이 제 조력의 첫걸음입니다."
+                title: "1단계: 조치 결정서 수령 및 기간 확인",
+                badge: "GOLDEN TIME",
+                exp: "통보서를 수령한 날로부터 **90일**, 있었던 날로부터 **180일** 이내에 청구해야 하며, 이 기간을 하루라도 넘기면 청구 자체가 거부되는 '각하' 판결을 받게 됩니다.",
+                guide: "재심이 폐지되어 행정심판이 구제책인 상황에서 90일은 길지 않습니다. 통보 즉시 자녀의 입시 일정과 연계하여 최적의 청구 시점을 설계해야 합니다. 불이익을 원천 차단하고 방어 기회를 확보하십시오."
             },
             2: {
-                title: "2단계: 회의록 확보 및 객관적 증거 수집 (약점 파악)",
-                exp: "정보공개청구를 통해 학폭위 **회의록**을 확보하는 것이 핵심입니다. 위원들이 어떤 근거로 점수를 매겼는지 분석하고, 담임교사 사실확인서, CCTV, 메시지 등 주장을 뒷받침할 객관적 물증을 확보해야 합니다. 이는 학폭위에서 간과된 **사실관계의 왜곡이나 오인**을 바로잡는 법적 기초가 됩니다.",
-                guide: "일반인은 회의록 속 위원들의 법리적 판단 오류를 찾아내기 어렵습니다. 학폭위 위원인 저는 내부 점수 산정 기준(심각성, 고의성 등)의 허점을 즉각 포착하여 사실관계를 재구성합니다. 특히 위원회가 신뢰하는 담임교사의 중립적 진술 등 '이기는 증거'를 전략적으로 선별하여 서면의 신뢰도를 극대화합니다."
+                title: "2단계: 회의록 확보 및 객관적 증거 수집",
+                badge: "EVIDENCE GATHERING",
+                exp: "정보공개청구를 통해 학폭위 **회의록**을 확보합니다. 위원들이 어떤 근거로 점수를 매겼는지 분석하고, CCTV나 증거를 확보하여 간과된 **사실관계의 왜곡이나 오인**을 바로잡습니다.",
+                guide: "일반인은 위원들의 법리적 판단 오류를 찾기 어렵습니다. 내부 점수 산정 기준(심각성, 고의성 등)의 허점을 포착하여 서면의 신뢰도를 극대화할 **객관적 증거**를 전략적으로 선별해야 합니다."
             },
             3: {
-                title: "3단계: 집행정지 신청 (생기부 기재의 방패)",
-                exp: "행정심판 청구와 동시에 처분의 효력을 일시적으로 멈추는 신청을 진행합니다. 인용되면 전학 등 조치 이행이 중단되고 **생활기록부 기재를 보류**할 수 있습니다. 이는 대입 원서 접수 시점에 기록이 없는 깨끗한 상태를 유지하여 자녀의 입시 불이익을 최소화하기 위한 필수적인 **법적 방어막**입니다.",
-                guide: "집행정지는 '회복하기 어려운 손해'를 법리적으로 소명해야 인용됩니다. 저는 자녀의 입시 일정과 조치 이행의 긴급성을 연결해 위원회를 설득하는 정교한 신청서를 작성합니다. 기록 기재를 일시적으로 늦춰 대입의 실질적 기회를 지켜내는 것은 오직 치밀한 법적 논리를 통해서만 가능합니다."
+                title: "3단계: 집행정지 신청 (생기부 기재 방패)",
+                badge: "SUSPENSION",
+                exp: "행정심판 청구와 동시에 처분의 효력을 일시 중단시키는 신청을 진행합니다. 인용되면 전학 등 조치 이행이 중단되고 **생활기록부 기재를 보류**할 수 있는 훌륭한 법적 방어막입니다.",
+                guide: "집행정지는 **'회복하기 어려운 손해'**를 법리적으로 소명해야 하므로, 자녀의 입시 일정과 조치 이행의 긴급성을 연결해 위원회를 설득하는 정교한 신청서를 작성해야 합니다."
             },
             4: {
-                title: "4단계: 청구서 및 보충서면 제출 (논리의 칼날)",
-                exp: "**사실관계 오인, 절차상 하자, 비례 원칙 위반**을 근거로 처분의 부당성을 상세히 기술하는 과정입니다. 교육청의 답변서를 분석하여 논리적 허점을 반박하는 보충서면을 제출하며, 서면 심리를 원칙으로 하는 행정심판에서 위원들의 마음을 움직여 처분을 뒤집는 가장 중요한 **실전 승부처**입니다.",
-                guide: "감정적 호소는 위원들에게 통하지 않습니다. 저는 실제 심의 현장에서 위원들이 중시하는 판례와 법리를 동원해 처분이 가혹하다는 점을 증명합니다. 상대방의 논리를 무너뜨리는 반박 서면을 통해 조치 수위를 단 한 단계라도 낮추어 자녀의 대학 지원 폭을 비약적으로 넓히는 전략적 서면을 직접 집필합니다."
+                title: "4단계: 청구서 및 보충서면 제출",
+                badge: "LEGAL ARGUMENT",
+                exp: "**사실관계 오인, 절차상 하자, 비례 원칙 위반**을 근거로 처분의 부당성을 기술합니다. 교육청의 답변서를 분석하여 논리적 허점을 반박하는 보충서면이 가장 결정적인 역할을 합니다.",
+                guide: "중시되는 판례와 법리를 동원해 처분이 가혹하다는 점을 명확히 입증하십시오. 상대의 논리를 무너뜨리는 치밀한 반박 서면을 통해 조치 수위를 단 한 단계라도 낮출 수 있습니다."
             },
             5: {
-                title: "5단계: 심리 및 최종 재결 (최종 승소의 순간)",
-                exp: "행정심판위원회가 제출된 서면과 증거를 토대로 최종 판단을 내립니다. 처분을 취소하거나 낮은 호수로 변경하는 **'인용'**, 혹은 처분을 유지하는 **'기각'** 결과가 나옵니다. 필요한 경우 구술심리에 참석하여 위원들의 질문에 직접 답변하며 억울함을 풀고 교육적 선처의 필요성을 강조할 마지막 기회를 갖습니다.",
-                guide: "구술심리가 열리면 위원들의 날카로운 질문이 쏟아집니다. 저는 위원으로서 어떤 답변에 가점을 주고 어떤 태도가 인용 확률을 높이는지 누구보다 잘 압니다. 자녀와 부모님이 실전 면접처럼 대비하도록 조력하여, 최종적으로 '조치 감경'이라는 최선의 결과를 이끌어내어 자녀의 미래를 지켜냅니다."
+                title: "5단계: 심리 및 최종 재결",
+                badge: "FINAL RULING",
+                exp: "심판위원회가 최종 판단을 내리며, 처분을 취소하거나 변경하는 **'인용'**, 혹은 유지하는 **'기각'** 결과가 도출됩니다. 필요 시 구술심리에 참석하여 억울함을 풀 마지막 기회를 갖습니다.",
+                guide: "구술심리에서는 날카로운 질문에 정확히 답변해야 합니다. 실전 면접처럼 대비하여 '조치 감경'을 통해 교육적 선처를 간곡히 요청하십시오."
             }
         };
 
@@ -627,8 +635,10 @@
             setTimeout(() => {
                 const data = stepData[num];
                 document.getElementById('canvas-title').textContent = data.title;
-                document.getElementById('canvas-explanation').innerHTML = data.exp.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900">$1</strong>');
-                document.getElementById('canvas-guide').innerHTML = `"${data.guide}"`;
+                const badgeEl = document.getElementById('canvas-badge');
+                if (badgeEl && data.badge) badgeEl.textContent = data.badge;
+                document.getElementById('canvas-explanation').innerHTML = data.exp.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900 dark:text-white">$1</strong>');
+                document.getElementById('canvas-guide').innerHTML = `"${data.guide.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900 dark:text-white">$1</strong>')}"`;
                 bgNum.textContent = num < 10 ? '0' + num : num;
 
                 const blogGrid = document.getElementById('blog-grid');
